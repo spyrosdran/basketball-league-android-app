@@ -11,4 +11,5 @@
     <color name="iconForeground">#65656B</color>
     <color name="orangeForeground">#D59306</color>
     <color name="whiteForeground">#FFFFFFFF</color>
+    <color name="fragmentBackground">#343434</color>
 </resources>
