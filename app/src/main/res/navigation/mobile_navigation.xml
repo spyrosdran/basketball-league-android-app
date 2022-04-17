@@ -21,11 +21,11 @@
         android:id="@+id/navigation_matches"
         android:name="com.example.basketballleague.ui.notifications.NotificationsFragment"
         android:label="@string/title_matches"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_matches" />
 
     <fragment
         android:id="@+id/navigation_top5"
         android:name="com.example.basketballleague.ui.notifications.NotificationsFragment"
         android:label="@string/title_top5"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_top5" />
 </navigation>
