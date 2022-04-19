@@ -16,7 +16,7 @@ import com.example.basketballleague.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    public ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setStatusBarColor(getResources().getColor(R.color.backgroundColor));
+        try{
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        } catch(NullPointerException e){
+            e.printStackTrace();
         }
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.backgroundColor));
     }
 
 }
