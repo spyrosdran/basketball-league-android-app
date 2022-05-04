@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,10 +31,31 @@ public class MatchesFragment extends Fragment {
         binding = FragmentMatchesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textMatches;
-        matchesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+
         return root;
     }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.details.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MatchesFragment.this).navigate(R.id.action_navigation_matches_to_navigation_match_details);
+            }
+
+        });
+
+        binding.admin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MatchesFragment.this).navigate(R.id.action_navigation_matches_to_navigation_admin);
+            }
+
+        });
+    }
+
 
     @Override
     public void onDestroyView() {
