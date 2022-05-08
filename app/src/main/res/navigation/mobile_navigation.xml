@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_matches_to_navigation_admin"
             app:destination="@id/navigation_admin" />
+        <action
+            android:id="@+id/action_navigation_matches_to_navigation_live_matches"
+            app:destination="@id/navigation_live_matches" />
     </fragment>
 
     <fragment
@@ -55,4 +58,13 @@
             android:id="@+id/action_navigation_admin_to_navigation_matches"
             app:destination="@id/navigation_matches" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_live_matches"
+        android:name="com.example.basketballleague.ui.matches.LiveMatch"
+        android:label="LiveMatches"
+        tools:layout="@layout/fragment_live_match" >
+        <action
+            android:id="@+id/action_navigation_matches_to_navigation_live_matches_to_navigation_matches"
+            app:destination="@id/navigation_matches" />
+        </fragment>
 </navigation>

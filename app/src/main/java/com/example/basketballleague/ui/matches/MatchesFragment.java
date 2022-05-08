@@ -54,6 +54,13 @@ public class MatchesFragment extends Fragment {
             }
 
         });
+        binding.live.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MatchesFragment.this).navigate(R.id.action_navigation_matches_to_navigation_live_matches);
+            }
+
+        });
     }
 
 
