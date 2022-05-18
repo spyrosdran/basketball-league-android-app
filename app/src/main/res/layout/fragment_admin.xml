@@ -40,6 +40,7 @@
                 android:layout_height="70dp"
                 android:background="@drawable/img"
                 android:src="@drawable/olympiacos"
+                android:padding="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,6 +84,7 @@
                 android:layout_height="70dp"
                 android:background="@drawable/img"
                 android:src="@drawable/olympiacos"
+                android:padding="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,10 +95,13 @@
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/adminTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:tabIndicatorColor="@android:color/holo_orange_dark"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabIndicatorHeight="0dp"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Display1"
         app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
@@ -115,6 +120,13 @@
             android:text="Line Up"></com.google.android.material.tabs.TabItem>
 
     </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/adminViewPager">
+
+    </androidx.viewpager.widget.ViewPager>
 
 
     </LinearLayout>

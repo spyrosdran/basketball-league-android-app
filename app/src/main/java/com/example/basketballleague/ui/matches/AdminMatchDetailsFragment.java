@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 import com.example.basketballleague.R;
 
-public class MatchDetailsFragment extends Fragment {
+public class AdminMatchDetailsFragment extends Fragment {
 
-    private MatchDetailsViewModel mViewModel;
+    private AdminMatchDetailsViewModel mViewModel;
 
-    public static MatchDetailsFragment newInstance() {
-        return new MatchDetailsFragment();
+    public static AdminMatchDetailsFragment newInstance() {
+        return new AdminMatchDetailsFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_match_details, container, false);
+        return inflater.inflate(R.layout.fragment_admin_match_details, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MatchDetailsViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AdminMatchDetailsViewModel.class);
         // TODO: Use the ViewModel
     }
 

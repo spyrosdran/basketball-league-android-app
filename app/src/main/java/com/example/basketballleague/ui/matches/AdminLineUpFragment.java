@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 
 import com.example.basketballleague.R;
 
-public class FragmentAdminLineUp extends Fragment {
+public class AdminLineUpFragment extends Fragment {
 
-    private FragmentAdminLineUpViewModel mViewModel;
+    private AdminLineUpFragmentViewModel mViewModel;
 
-    public static FragmentAdminLineUp newInstance() {
-        return new FragmentAdminLineUp();
+    public static AdminLineUpFragment newInstance() {
+        return new AdminLineUpFragment();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class FragmentAdminLineUp extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FragmentAdminLineUpViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AdminLineUpFragmentViewModel.class);
         // TODO: Use the ViewModel
     }
 

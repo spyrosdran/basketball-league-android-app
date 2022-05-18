@@ -38,9 +38,9 @@
 
     <fragment
         android:id="@+id/navigation_match_details"
-        android:name="com.example.basketballleague.ui.matches.MatchDetailsFragment"
+        android:name="com.example.basketballleague.ui.matches.AdminMatchDetailsFragment"
         android:label="@string/title_matches"
-        tools:layout="@layout/fragment_match_details" >
+        tools:layout="@layout/fragment_admin_match_details" >
         <action
             android:id="@+id/action_navigation_match_details_to_navigation_matches"
             app:destination="@id/navigation_matches" />

@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 
 import com.example.basketballleague.R;
 
-public class FragmentAdminLiveCommentary extends Fragment {
+public class AdminLiveCommentaryFragment extends Fragment {
 
-    private FragmentAdminLiveCommentaryViewModel mViewModel;
+    private AdminLiveCommentaryFragmentViewModel mViewModel;
 
-    public static FragmentAdminLiveCommentary newInstance() {
-        return new FragmentAdminLiveCommentary();
+    public static AdminLiveCommentaryFragment newInstance() {
+        return new AdminLiveCommentaryFragment();
     }
 
     @Override
@@ -31,7 +31,7 @@ public class FragmentAdminLiveCommentary extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FragmentAdminLiveCommentaryViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(AdminLiveCommentaryFragmentViewModel.class);
         // TODO: Use the ViewModel
     }
 
