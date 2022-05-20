@@ -12,4 +12,7 @@
     <color name="orangeForeground">#D59306</color>
     <color name="whiteForeground">#FFFFFFFF</color>
     <color name="fragmentBackground">#343434</color>
+    <color name="grey">#202020</color>
+    <color name="light_grey">#aeaeae</color>
+
 </resources>
