@@ -2,9 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.matches.MatchDetailsFragment">
+
 
     <ImageView
         android:id="@+id/firstTeam"
@@ -26,50 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_marginTop="243dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
 
-        <TextView
-            android:id="@+id/chosenTab"
-            android:layout_width="145dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="9dp"
-            android:background="@drawable/ic_match_detail"
-            android:text="@string/match_detail"
-            android:textAlignment="center"
-            android:paddingTop="14dp"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:id="@+id/txtTab2"
-            android:layout_width="107dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="20dp"
-            android:text="@string/live_commentary"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtTab3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_weight="1"
-            android:text="@string/line_up"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/teamName1"
@@ -140,12 +99,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonBack"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="52dp"
-        android:text="<"
+        android:text="b"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -166,15 +125,18 @@
         android:id="@+id/linearLayout1"
         android:layout_width="110dp"
         android:layout_height="360dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -182,33 +144,36 @@
         android:layout_width="110dp"
         android:layout_height="360dp"
         android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="110dp"
         android:layout_height="360dp"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/linearLayout1"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
