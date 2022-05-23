@@ -62,7 +62,7 @@
         android:id="@+id/navigation_live_matches"
         android:name="com.example.basketballleague.ui.matches.LiveMatch"
         android:label="LiveMatches"
-        tools:layout="@layout/fragment_live_match" >
+        tools:layout="@layout/fragment_live_matches" >
         <action
             android:id="@+id/action_navigation_matches_to_navigation_live_matches_to_navigation_matches"
             app:destination="@id/navigation_matches" />
