@@ -9,4 +9,6 @@
     <string name="match_detail">Match Detail</string>
     <string name="live_commentary">Live Commentary</string>
     <string name="line_up">Line up</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
