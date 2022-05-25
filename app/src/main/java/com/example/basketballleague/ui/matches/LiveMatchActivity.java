@@ -71,7 +71,7 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new MatchDetailsFragment();
                 break;
             case 1:
-                fragment = new MatchesFragment();
+                fragment = new LiveCommentaryFragment();
                 break;
             case 2:
                 fragment = new AdminFragment();
