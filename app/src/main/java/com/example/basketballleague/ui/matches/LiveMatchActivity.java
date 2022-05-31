@@ -74,7 +74,7 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new LiveCommentaryFragment();
                 break;
             case 2:
-                fragment = new AdminFragment();
+                fragment = new LineUpFragment();
                 break;
         }
         return fragment;
