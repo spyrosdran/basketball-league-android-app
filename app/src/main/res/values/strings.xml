@@ -6,8 +6,15 @@
     <string name="title_top5">Top 5</string>
     <string name="league_name">Basket League 2022</string>
     <string name="title_admin">admin</string>
-    <string name="match_detail">match detail</string>
+
+    <string name="match_detail">Match Detail</string>
+    <string name="live_commentary">Live Commentary</string>
+    <string name="line_up">Line up</string>
+  
+
+   
     <string name="start_page_title">The official\nBasket League App</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up">Sign up</string>
+
 </resources>
