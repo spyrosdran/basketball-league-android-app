@@ -52,4 +52,15 @@
         android:name="com.example.basketballleague.ui.matches.LiveMatchActivity"
         android:label="activity_live_match"
         tools:layout="@layout/activity_live_match" />
+    <fragment
+        android:id="@+id/liveMatchFragment"
+        android:name="com.example.basketballleague.ui.matches.LiveMatchFragment"
+        android:label="fragment_live_match"
+        tools:layout="@layout/fragment_live_match" >
+        <action
+            android:id="@+id/action_liveMatchFragment_to_navigation_matches"
+            app:destination="@id/navigation_matches"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
 </navigation>

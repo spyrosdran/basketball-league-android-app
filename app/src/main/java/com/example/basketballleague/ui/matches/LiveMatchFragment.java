@@ -2,7 +2,9 @@ package com.example.basketballleague.ui.matches;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.basketballleague.R;
-import com.example.basketballleague.databinding.FragmentMatchDetailsBinding;
+import com.example.basketballleague.databinding.FragmentLiveMatchBinding;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class LiveMatchFragment extends Fragment {
-    private FragmentMatchDetailsBinding binding;
+    private FragmentLiveMatchBinding binding;
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -55,9 +57,21 @@ public class LiveMatchFragment extends Fragment {
         TextView teamName2 = view.findViewById(R.id.teamName2);
         teamName2.setText("name2");
 
-        binding = FragmentMatchDetailsBinding.inflate(inflater, container, false);
+        binding = FragmentLiveMatchBinding.inflate(inflater, container, false);
         View root1 = binding.getRoot();
         return root1;
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(LiveMatchFragment.this).navigate(R.id.action_liveMatchFragment_to_navigation_matches);
+            }
+
+        });
     }
 }
 
