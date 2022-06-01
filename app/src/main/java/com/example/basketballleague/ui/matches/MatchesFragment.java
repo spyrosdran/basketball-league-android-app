@@ -42,7 +42,7 @@ public class MatchesFragment extends Fragment {
         binding.details.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(MatchesFragment.this).navigate(R.id.action_navigation_matches_to_navigation_match_details);
+                NavHostFragment.findNavController(MatchesFragment.this).navigate(R.id.action_navigation_matches_to_liveMatchActivity5);
             }
 
         });
