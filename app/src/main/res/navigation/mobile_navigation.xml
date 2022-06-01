@@ -15,7 +15,7 @@
         android:id="@+id/navigation_standings"
         android:name="com.example.basketballleague.ui.standings.StandingsFragment"
         android:label="@string/title_standings"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_standings" />
 
     <fragment
         android:id="@+id/navigation_matches"
