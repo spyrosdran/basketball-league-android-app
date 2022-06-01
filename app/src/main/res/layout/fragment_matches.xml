@@ -1,41 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.matches.MatchesFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_margin="25dp">
+
+    <TextView
+
+        android:id="@+id/league_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="22dp"
+        android:text="Matches Administration"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="23dp" />
+
+
+    <Spinner
+        android:id="@+id/league_spinner"
+        style="@style/LeagueSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Matches"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_weight="50"/>
+
+        <Button
+            android:id="@+id/new_match"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="Past Matches >"
+            android:textColor="@color/cardTextGrey"
+            android:textAllCaps="false"
+            android:textAlignment="textEnd"/>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/details"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:text="details"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.409" />
+        android:text="New Match"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/orangeForeground"
+        android:textAllCaps="false"
+        android:textAlignment="center"/>
 
-    <Button
-        android:id="@+id/live"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:text="Live"
-        app:layout_constraintEnd_toStartOf="@+id/details"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/details" />
+    <include
+        layout="@layout/match_card"
+        />
 
-    <Button
-        android:id="@+id/admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:text="admin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/details"
-        app:layout_constraintTop_toTopOf="@+id/details" />
+    <include
+        layout="@layout/match_card"
+        />
+    <include
+        layout="@layout/match_card"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

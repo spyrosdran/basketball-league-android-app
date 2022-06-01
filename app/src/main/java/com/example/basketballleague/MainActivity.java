@@ -1,28 +1,38 @@
 package com.example.basketballleague;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.WindowManager;
 
-import com.example.basketballleague.ui.matches.AdminLineUpFragment;
-import com.example.basketballleague.ui.matches.AdminLiveCommentaryFragment;
-import com.example.basketballleague.ui.matches.AdminMatchDetailsFragment;
-import com.example.basketballleague.ui.matches.AdminViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.basketballleague.databinding.ActivityMainBinding;
 import com.google.android.material.tabs.TabLayout;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,28 +41,40 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout adminTabLayout;
     private ViewPager adminViewPager;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-/*
-        //Setting up the Admin TabLayout
-        adminTabLayout = findViewById(R.id.adminTabLayout);
-        adminViewPager = findViewById(R.id.adminViewPager);
 
-        adminTabLayout.setupWithViewPager(adminViewPager);
+        okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
+        String myIP = "192.168.1.4";
 
-        AdminViewPagerAdapter avpa = new AdminViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        avpa.addFragment(new AdminMatchDetailsFragment(), "Match Details");
-        avpa.addFragment(new AdminLiveCommentaryFragment(), "Live Commentary");
-        avpa.addFragment(new AdminLineUpFragment(), "Line Up");
+        //Fragment Home Setup
+        RecyclerView liveMatches = findViewById(R.id.live_matches);
+        RecyclerView pastMatches = findViewById(R.id.past_matches);
 
-        adminViewPager.setAdapter(avpa);
-*/
+        //Getting Matches Data
+        ArrayList<Match> matches = new ArrayList<>();
+
+        try {
+            matches = okHttpHandlerAdmin.populateHomePage("http://" + myIP + "/basketleague/getMatches.php");
+            Log.d("My App","Successful http request");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        if(matches.isEmpty())
+            Log.d("MyApp","Matches is empty");
+        //Adapting The Match Data
+        MatchViewAdapter matchViewAdapter = new MatchViewAdapter(this, matches);
+        pastMatches.setAdapter(matchViewAdapter);
+        pastMatches.setLayoutManager(new LinearLayoutManager(this));
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
-       // Passing each menu ID as a set of Ids because each
+        // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_standings, R.id.navigation_matches, R.id.navigation_top5)
@@ -62,14 +84,15 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        try{
+        try {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-        } catch(NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         getWindow().setStatusBarColor(getResources().getColor(R.color.backgroundColor));
     }
+
 
 }
