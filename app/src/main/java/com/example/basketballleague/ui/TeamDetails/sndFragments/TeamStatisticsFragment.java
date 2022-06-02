@@ -70,13 +70,13 @@ public class TeamStatisticsFragment extends Fragment {
         int bltxt=db.getTotalblocks();
         btxt.setText("Blocks/game: "+String.valueOf(bltxt));
 
-        TextView stxt = rootView.findViewById(R.id.turnovers);
-        int stealstxt=db.getTotalsteals();
-        stxt.setText("Steals/game: "+String.valueOf(stealstxt));
+        TextView ttxt = rootView.findViewById(R.id.turnovers);
+        int turn=db.getTotalTurnovers();
+        ttxt.setText("Fouls/Game: "+String.valueOf(turn));
 
-        TextView tutxt = rootView.findViewById(R.id.turnovers);
-        int turntxt=db.getTotalTurnovers();
-        tutxt.setText("Total turnovers: "+String.valueOf(turntxt));
+        TextView stxt = rootView.findViewById(R.id.Steals);
+        int steals=db.getTotalsteals();
+        stxt.setText("Steals/Game: "+String.valueOf(steals));
 
         return rootView;
     }
