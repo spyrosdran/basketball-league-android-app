@@ -7,60 +7,77 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.basketballleague.R;
+import com.example.basketballleague.ui.TeamDetails.DataStatsConnection;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TeamStatisticsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+//the first fragment showing team stats
+
 public class TeamStatisticsFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TeamStatisticsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TeamStatisticsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TeamStatisticsFragment newInstance(String param1, String param2) {
-        TeamStatisticsFragment fragment = new TeamStatisticsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_team_statistics, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_team_statistics, container, false);
+        DataStatsConnection db = new DataStatsConnection();
+
+        TextView txtGp = rootView.findViewById(R.id.GPtxt);
+        String t = db.getMatchesLenght();
+        txtGp.setText("Games Played: "+t);
+
+        //calculation of team stats from team
+        db.calculateStats();
+        db.calculateTeamStats();
+
+        //Text views values set Total Wins/loses/home/away points/points per game/etc
+        TextView wtxt= rootView.findViewById(R.id.WinTxt);
+        int wintext=db.getTotalWins();
+        wtxt.setText("Total wins: "+String.valueOf(wintext));
+
+        TextView ltxt = rootView.findViewById(R.id.LoseTxt);
+        int losestxt = db.getTotalLoses();
+        ltxt.setText("Total loses: "+ String.valueOf(losestxt));
+
+        TextView htxt = rootView.findViewById(R.id.hometxt);
+        int hometxt=db.getTotalHomepoints();
+        htxt.setText("Home points: "+ String.valueOf(hometxt));
+
+        TextView gtxt = rootView.findViewById(R.id.GuestTxt);
+        int guesttxt=db.getTotalAwaypoints();
+        gtxt.setText("Guest points: "+String.valueOf(guesttxt));
+
+        TextView ptxt = rootView.findViewById(R.id.PointsTxt);
+        int pointsPerGame=db.getPointsPerGame();
+        ptxt.setText("Points Per Game: "+String.valueOf(pointsPerGame));
+
+        TextView atxt = rootView.findViewById(R.id.AssistsTxt);
+        int assiststxt=db.getTotalassists();
+        atxt.setText("Assists/game: "+String.valueOf(assiststxt));
+
+        TextView rbtxt = rootView.findViewById(R.id.ReboundsTxt);
+        int rebtxt=db.getTotalrebounds();
+        rbtxt.setText("Rebounds/game: "+String.valueOf(rebtxt));
+
+        TextView btxt = rootView.findViewById(R.id.BlocksTxt);
+        int bltxt=db.getTotalblocks();
+        btxt.setText("Blocks/game: "+String.valueOf(bltxt));
+
+        TextView stxt = rootView.findViewById(R.id.turnovers);
+        int stealstxt=db.getTotalsteals();
+        stxt.setText("Steals/game: "+String.valueOf(stealstxt));
+
+        TextView tutxt = rootView.findViewById(R.id.turnovers);
+        int turntxt=db.getTotalTurnovers();
+        tutxt.setText("Total turnovers: "+String.valueOf(turntxt));
+
+        return rootView;
     }
 }
