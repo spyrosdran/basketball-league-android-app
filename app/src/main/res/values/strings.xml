@@ -9,6 +9,14 @@
     <string name="match_detail">Match Detail</string>
     <string name="live_commentary">Live Commentary</string>
     <string name="line_up">Line up</string>
+    <string name="Pointers_2">2Pointers</string>
+    <string name="Pointers_3">3Pointers</string>
+    <string name="free_throws">Free Throws</string>
+    <string name="rebounds">Rebounds</string>
+    <string name="blocks">Blocks</string>
+    <string name="steals">Steals</string>
+    <string name="turnovers">Turnovers</string>
+    <string name="assists">Assists</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
