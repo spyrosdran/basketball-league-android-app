@@ -63,8 +63,8 @@
 
                     <ImageView
                         android:id="@+id/TeamIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:src="@drawable/ic_teams_template" />
                 </TableRow>
 
@@ -78,6 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Name"
+                        android:textAlignment="center"
                         android:textColor="#FFFFFF" />
                 </TableRow>
 
@@ -91,6 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Location"
+                        android:textAlignment="center"
                         android:textColor="#FFFFFF" />
                 </TableRow>
 
@@ -105,6 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Curren Position"
+                        android:textAlignment="center"
                         android:textColor="#FFFFFF" />
                 </TableRow>
 
