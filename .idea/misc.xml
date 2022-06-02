@@ -12,11 +12,17 @@
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_home.xml" value="0.19746376811594202" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_line_up.xml" value="0.11302083333333333" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_matches.xml" value="0.19746376811594202" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_top5.xml" value="0.19746376811594202" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueAppOlga/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueAppOlga/app/src/main/res/drawable/ic_standings.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueAppOlga/app/src/main/res/drawable/standings_record_background.xml" value="0.1025" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueAppOlga/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueAppOlga/app/src/main/res/layout/fragment_standings.xml" value="0.4" />
         <entry key="..\:/Users/Evangelia/AndroidStudioProjects/basketball-league-android-app/app/src/main/res/drawable/ic_league_logo_background.xml" value="0.2435" />
         <entry key="..\:/Users/Evangelia/AndroidStudioProjects/basketball-league-android-app/app/src/main/res/drawable/ic_lineup.xml" value="0.2435" />
         <entry key="..\:/Users/Evangelia/AndroidStudioProjects/basketball-league-android-app/app/src/main/res/drawable/ic_live_commantary.xml" value="0.2435" />
