@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:padding="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="15dp"
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
@@ -25,10 +24,10 @@
     </LinearLayout>
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:layout_marginBottom="15dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -39,15 +38,14 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/img"
-                android:src="@drawable/olympiacos"
                 android:padding="2dp"
+                android:src="@drawable/olympiacos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
         <LinearLayout
@@ -57,6 +55,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="40 - 56"
@@ -83,8 +82,8 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/img"
-                android:src="@drawable/olympiacos"
                 android:padding="2dp"
+                android:src="@drawable/olympiacos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -121,12 +120,27 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <Button
+        android:id="@+id/start_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/adminViewPager">
+        android:layout_marginTop="5sp"
+        android:layout_marginBottom="5sp"
+        android:backgroundTint="@color/cardTextGrey"
+        android:text="Start Match"
+        android:textColor="@color/white" />
+
+    <FrameLayout
+        android:id="@+id/simpleFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/adminViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     </androidx.viewpager.widget.ViewPager>
-
-
-    </LinearLayout>
+    -->
+</LinearLayout>

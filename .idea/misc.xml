@@ -56,6 +56,7 @@
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/tab_selector.xml" value="0.201" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/unselected_tab.xml" value="0.1" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/activity_match_administration.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/activity_new_match.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragmemt_live_matches.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragmemt_team_detail.xml" value="0.25" />
@@ -63,6 +64,7 @@
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_line_up.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_live_commentary.xml" value="0.2" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.19635416666666666" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_matches.xml" value="0.2477355072463768" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_live_commentary.xml" value="0.264" />

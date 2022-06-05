@@ -3,6 +3,7 @@ package com.example.basketballleague;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,29 +50,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
-        String myIP = "192.168.1.4";
 
-        //Fragment Home Setup
-        RecyclerView liveMatches = findViewById(R.id.live_matches);
-        RecyclerView pastMatches = findViewById(R.id.past_matches);
 
-        //Getting Matches Data
-        ArrayList<Match> matches = new ArrayList<>();
 
-        try {
-            matches = okHttpHandlerAdmin.populateHomePage("http://" + myIP + "/basketleague/getMatches.php");
-            Log.d("My App","Successful http request");
-        } catch (IOException e) {
-            e.printStackTrace();
 
-        }
-        if(matches.isEmpty())
-            Log.d("MyApp","Matches is empty");
-        //Adapting The Match Data
-        MatchViewAdapter matchViewAdapter = new MatchViewAdapter(this, matches);
-        pastMatches.setAdapter(matchViewAdapter);
-        pastMatches.setLayoutManager(new LinearLayoutManager(this));
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

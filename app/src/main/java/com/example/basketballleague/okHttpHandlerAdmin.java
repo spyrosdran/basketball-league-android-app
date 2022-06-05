@@ -24,7 +24,7 @@ public class okHttpHandlerAdmin {
         StrictMode.setThreadPolicy(policy);
     }
 
-    public ArrayList<Match> populateHomePage(String url) throws IOException {
+    public ArrayList<Match> getMatchesData(String url) throws IOException {
 
         ArrayList<Match> matches = new ArrayList<>();
         OkHttpClient client = new OkHttpClient().newBuilder().build();
@@ -38,16 +38,22 @@ public class okHttpHandlerAdmin {
 
             JSONObject json = new JSONObject(data);
             Iterator<String> keys = json.keys();
-            ArrayList<String> values = new ArrayList<>();
 
-            while(keys.hasNext()) {
-                String next = keys.next();
-                values.add(json.get(next).toString());
-            }
+            do {
+                String matchID = keys.next();
 
-            for (int i=0; i<values.size()/6; i++){
-                matches.add(new Match(values.get(i), values.get(i+1), Integer.parseInt(values.get(i+2)), Integer.parseInt(values.get(i+3)), values.get(i+4), values.get(i+5) ));
-            }
+                JSONObject matchJSON = json.getJSONObject(matchID);
+                String homeTeam = matchJSON.getString("homeID");
+                String awayTeam = matchJSON.getString("awayID");
+                String homeScore = matchJSON.getString("homeScore");
+                String awayScore = matchJSON.getString("awayScore");
+                String startTime = matchJSON.getString("startTime");
+                String league = matchJSON.getString("league");
+
+                Match match = new Match(homeTeam, awayTeam, Integer.parseInt(homeScore), Integer.parseInt(awayScore), startTime, league);
+                matches.add(match);
+            } while (keys.hasNext());
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -55,5 +61,7 @@ public class okHttpHandlerAdmin {
         
         return matches;
     }
+
+
 
 }

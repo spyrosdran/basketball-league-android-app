@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="25dp">
 
@@ -18,57 +18,6 @@
         android:textSize="23dp" />
 
 
-    <Spinner
-        android:id="@+id/league_spinner"
-        style="@style/LeagueSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
-        android:orientation="horizontal"
-        android:weightSum="100">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Upcoming Matches"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_weight="50"/>
-
-        <Button
-            android:id="@+id/new_match"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:text="Past Matches >"
-            android:textColor="@color/cardTextGrey"
-            android:textAllCaps="false"
-            android:textAlignment="textEnd"/>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="New Match"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/orangeForeground"
-        android:textAllCaps="false"
-        android:textAlignment="center"/>
-
-    <include
-        layout="@layout/match_card"
-        />
-
-    <include
-        layout="@layout/match_card"
-        />
-    <include
-        layout="@layout/match_card"
-        />
 
 </LinearLayout>

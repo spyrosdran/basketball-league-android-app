@@ -1,6 +1,9 @@
 package com.example.basketballleague;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
 
     Context context;
     private ArrayList<Match> matches = new ArrayList<>();
+    View view;
 
     public MatchViewAdapter(Context context, ArrayList<Match> matches) {
         this.context = context;
@@ -31,15 +35,30 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
     public MatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.match_card, parent, false);
+        view = inflater.inflate(R.layout.match_card, parent, false);
 
-//        View view = LayoutInflater.from(context).inflate(R.layout.match_card, parent, false);
         return new MatchViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MatchViewHolder holder, int position) {
         holder.bind(matches.get(position));
+
+        //Setting up the OnClickListener
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MatchAdministrationActivity.class);
+                Match match = matches.get(position);
+                intent.putExtra("homeID", match.getHomeTeam());
+                intent.putExtra("awayID", match.getAwayTeam());
+                intent.putExtra("homeScore", match.getHomeTeamScore());
+                intent.putExtra("awayScore", match.getAwayTeamScore());
+                intent.putExtra("matchDate", match.getMatchDate());
+                intent.putExtra("matchLeague", match.getLeagueName());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
