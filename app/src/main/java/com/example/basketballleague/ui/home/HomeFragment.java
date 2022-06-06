@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         super.onStart();
 
         okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
-        String myIP = "192.168.119.1";
+        String myIP = "192.168.1.2";
 
         //Fragment Home Setup - R1 (showing matches)
 

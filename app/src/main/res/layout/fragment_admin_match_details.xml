@@ -7,16 +7,16 @@
     android:backgroundTint="@color/orangeForeground"
     tools:context=".ui.matches.AdminMatchDetailsFragment">
 
-    
 
     <Button
         android:id="@+id/player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="36sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickBP1"
         android:text="Player1"
+        android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,10 +24,11 @@
 
     <Button
         android:id="@+id/player4"
+        android:textSize="8sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="50sp"
+        android:layout_marginTop="24sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickBP4"
         android:text="Player4"
@@ -38,10 +39,11 @@
 
     <Button
         android:id="@+id/player5"
+        android:textSize="8sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="24sp"
+        android:layout_marginEnd="50sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickBP5"
         android:text="Player5"
@@ -51,9 +53,10 @@
 
     <Spinner
         android:id="@+id/events"
+        android:textSize="8sp"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="36dp"
+        android:layout_height="48sp"
+        android:layout_marginTop="36sp"
         android:backgroundTint="@color/orangeForeground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -62,9 +65,10 @@
 
     <Button
         android:id="@+id/player3"
+        android:textSize="8sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="-30sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickBP3"
         android:text="Player3"
@@ -73,10 +77,11 @@
         app:layout_constraintTop_toBottomOf="@+id/player1" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-30dp"
+        android:layout_marginTop="-30sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickBP2"
         android:text="Player2"
@@ -86,10 +91,11 @@
         app:layout_constraintTop_toBottomOf="@+id/player1" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="50sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickSubmit"
         android:text="SUBMIT"
@@ -98,9 +104,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/undoButton"
-        android:layout_width="85dp"
-        android:layout_height="48dp"
+        android:layout_width="85sp"
+        android:layout_height="48sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickUndo"
         android:text="Undo"
@@ -110,6 +117,7 @@
         app:layout_constraintTop_toTopOf="@+id/submitButton" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/buttonFT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,6 +130,7 @@
         app:layout_constraintTop_toTopOf="@+id/button2pt" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/button2pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -134,6 +143,7 @@
         app:layout_constraintTop_toBottomOf="@+id/events" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/button3pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,11 +156,12 @@
         app:layout_constraintTop_toTopOf="@+id/button2pt" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/buttonIN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="100sp"
+        android:layout_marginEnd="30sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickIN"
         android:text="IN"
@@ -160,10 +171,11 @@
         app:layout_constraintTop_toBottomOf="@+id/button2pt" />
 
     <Button
+        android:textSize="8sp"
         android:id="@+id/buttonOUT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="100sp"
         android:backgroundTint="@color/orangeForeground"
         android:onClick="onClickOUT"
         android:text="OUT"

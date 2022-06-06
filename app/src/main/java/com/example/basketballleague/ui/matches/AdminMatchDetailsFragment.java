@@ -132,12 +132,10 @@ public class AdminMatchDetailsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
+    public void onStart() {
+        super.onStart();
         eventList = new EventList();
         team = new TeamMembers();
-        super.onCreate(savedInstanceState);
 
         bp1 = (Button) getActivity().findViewById(R.id.player1);
         bp1.setVisibility(View.VISIBLE);
@@ -183,6 +181,11 @@ public class AdminMatchDetailsFragment extends Fragment {
                 android.R.layout.simple_spinner_dropdown_item,
                 eventList.getAllEvents());
         dropDown.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_admin_match_details, container, false);
     }

@@ -30,6 +30,13 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.adminTabLayout);
         FrameLayout simpleFrameLayout = findViewById(R.id.simpleFrameLayout);
 
+        Fragment fragment = new AdminMatchDetailsFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.simpleFrameLayout, fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -46,6 +53,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
                         fragment = new AdminLineUpFragment();
                         break;
                 }
+
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.simpleFrameLayout, fragment);
