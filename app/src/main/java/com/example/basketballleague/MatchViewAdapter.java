@@ -50,6 +50,7 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
             public void onClick(View view) {
                 Intent intent = new Intent(context, MatchAdministrationActivity.class);
                 Match match = matches.get(position);
+                intent.putExtra("matchID", match.getMatchID());
                 intent.putExtra("homeID", match.getHomeTeam());
                 intent.putExtra("awayID", match.getAwayTeam());
                 intent.putExtra("homeScore",Integer.toString(match.getHomeTeamScore()));

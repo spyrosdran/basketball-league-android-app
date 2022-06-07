@@ -161,6 +161,7 @@
                 android:textColor="@color/white" />
 
             <TextView
+                android:id="@+id/arrow_out"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="14sp"
@@ -179,6 +180,7 @@
             android:paddingRight="30sp">
 
             <TextView
+                android:id="@+id/arrow_in"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="14sp"

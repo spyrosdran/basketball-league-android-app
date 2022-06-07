@@ -15,6 +15,10 @@ public class TeamMembers {
         players.add("WESTBROOK");
     }
 
+    public TeamMembers(String matchID){
+
+    }
+
     public List<String> getAllPlayers() {
         List<String> temp = new ArrayList<String>();
         for (int i=0; i<players.size(); i++) {

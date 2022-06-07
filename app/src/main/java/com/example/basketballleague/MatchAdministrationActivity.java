@@ -7,15 +7,23 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.basketballleague.ui.matches.AdminLineUpFragment;
 import com.example.basketballleague.ui.matches.AdminLiveCommentaryFragment;
 import com.example.basketballleague.ui.matches.AdminMatchDetailsFragment;
+import com.example.basketballleague.ui.matches.TeamMembers;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class MatchAdministrationActivity extends AppCompatActivity {
+
+    private ArrayList<String> homeTeam = new ArrayList<>();
+    private ArrayList<String> awayTeam = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,29 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         String score = intent.getStringExtra("homeScore") + " - " + intent.getStringExtra("awayScore");
         TextView scoreView = findViewById(R.id.score);
         scoreView.setText(score);
+
+        okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
+        String matchID = intent.getStringExtra("matchID");
+        //String myIP = "192.168.1.2";
+        //String url = "http://" + myIP + "/basketleague/getPlayersData.php?matchID=" + matchID;
+        ArrayList<String> allPlayers = new ArrayList<>();
+
+        try {
+            allPlayers = okHttpHandlerAdmin.getPlayersData(intent.getStringExtra("matchID"));
+            Log.d("My App","Successful http request for players");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(int i=0; i<5; i++){
+            homeTeam.add(allPlayers.get(i));
+        }
+
+        for(int i=5; i<10; i++){
+            awayTeam.add(allPlayers.get(i));
+        }
+
+
 
         TabLayout tabLayout = findViewById(R.id.adminTabLayout);
         FrameLayout simpleFrameLayout = findViewById(R.id.simpleFrameLayout);
@@ -50,7 +81,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
                         fragment = new AdminLiveCommentaryFragment();
                         break;
                     case 2:
-                        fragment = new AdminLineUpFragment();
+                        fragment = new AdminLineUpFragment(homeTeam, awayTeam, getIntent());
                         break;
                 }
 

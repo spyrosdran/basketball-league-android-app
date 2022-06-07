@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
         super.onStart();
 
         okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
-        String myIP = "192.168.1.2";
 
         //Fragment Home Setup - R1 (showing matches)
 
@@ -48,7 +47,7 @@ public class HomeFragment extends Fragment {
         ArrayList<Match> upcomingMatchesArray = new ArrayList<>();
 
         try {
-            upcomingMatchesArray = okHttpHandlerAdmin.getMatchesData("http://" + myIP + "/basketleague/getUpcomingMatches.php");
+            upcomingMatchesArray = okHttpHandlerAdmin.getMatchesData("getUpcomingMatches.php");
             Log.d("My App","Successful http request");
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,7 +67,7 @@ public class HomeFragment extends Fragment {
         ArrayList<Match> matches = new ArrayList<>();
 
         try {
-            matches = okHttpHandlerAdmin.getMatchesData("http://" + myIP + "/basketleague/getPastMatches.php");
+            matches = okHttpHandlerAdmin.getMatchesData("getPastMatches.php");
             Log.d("My App","Successful http request");
         } catch (IOException e) {
             e.printStackTrace();
