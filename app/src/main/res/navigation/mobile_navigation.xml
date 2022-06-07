@@ -23,14 +23,13 @@
         android:label="@string/title_matches"
         tools:layout="@layout/fragment_matches" >
         <action
-            android:id="@+id/action_navigation_matches_to_navigation_match_details"
-            app:destination="@id/navigation_match_details" />
-        <action
             android:id="@+id/action_navigation_matches_to_navigation_admin"
             app:destination="@id/navigation_admin" />
         <action
-            android:id="@+id/action_navigation_matches_to_navigation_live_matches"
-            app:destination="@id/navigation_live_matches" />
+            android:id="@+id/action_navigation_matches_to_liveMatchActivity5"
+            app:destination="@id/liveMatchActivity5"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -38,16 +37,6 @@
         android:name="com.example.basketballleague.ui.top5.Top5Fragment"
         android:label="@string/title_top5"
         tools:layout="@layout/fragment_top5" />
-
-    <fragment
-        android:id="@+id/navigation_match_details"
-        android:name="com.example.basketballleague.ui.matches.MatchDetailsFragment"
-        android:label="@string/title_matches"
-        tools:layout="@layout/fragment_match_details" >
-        <action
-            android:id="@+id/action_navigation_match_details_to_navigation_matches"
-            app:destination="@id/navigation_matches" />
-    </fragment>
 
     <fragment
         android:id="@+id/navigation_admin"
@@ -58,13 +47,20 @@
             android:id="@+id/action_navigation_admin_to_navigation_matches"
             app:destination="@id/navigation_matches" />
     </fragment>
+    <activity
+        android:id="@+id/liveMatchActivity5"
+        android:name="com.example.basketballleague.ui.matches.LiveMatchActivity"
+        android:label="activity_live_match"
+        tools:layout="@layout/activity_live_match" />
     <fragment
-        android:id="@+id/navigation_live_matches"
-        android:name="com.example.basketballleague.ui.matches.LiveMatch"
-        android:label="LiveMatches"
-        tools:layout="@layout/fragment_live_matches" >
+        android:id="@+id/liveMatchFragment"
+        android:name="com.example.basketballleague.ui.matches.LiveMatchFragment"
+        android:label="fragment_live_match"
+        tools:layout="@layout/fragment_live_match" >
         <action
-            android:id="@+id/action_navigation_matches_to_navigation_live_matches_to_navigation_matches"
-            app:destination="@id/navigation_matches" />
-        </fragment>
+            android:id="@+id/action_liveMatchFragment_to_navigation_matches"
+            app:destination="@id/navigation_matches"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
 </navigation>
