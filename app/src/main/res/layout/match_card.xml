@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginTop="10dp"
+    android:background="@drawable/match_card"
     >
 
     <!-- Session, League & Back Button -->
@@ -15,29 +16,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="100"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10sp">
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="65"
+            android:layout_weight="50"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Regular Session"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                />
 
             <TextView
                 android:id="@+id/league_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Greek HEBA A1"
-                android:textColor="@color/cardTextGrey"
+                android:textColor="@color/white"
                 android:textSize="14dp"
                 />
 
@@ -47,17 +41,18 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="35"
+            android:layout_weight="50"
             android:orientation="horizontal"
             android:gravity="right">
 
-            <Button
+            <TextView
                 android:id="@+id/details_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="In 12 Hours"
                 android:textColor="@color/white"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:backgroundTint="@color/fragmentBackground"/>
 
         </LinearLayout>
 
@@ -70,7 +65,6 @@
         android:layout_height="wrap_content"
         android:weightSum="100"
         android:orientation="horizontal"
-        android:background="@drawable/match_card"
         android:padding="10dp">
 
         <!-- Team Photos -->

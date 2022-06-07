@@ -45,10 +45,10 @@ public class okHttpHandlerAdmin {
                 JSONObject matchJSON = json.getJSONObject(matchID);
                 String homeTeam = matchJSON.getString("homeID");
                 String awayTeam = matchJSON.getString("awayID");
-                String homeScore = matchJSON.getString("homeScore");
-                String awayScore = matchJSON.getString("awayScore");
+                String homeScore = matchJSON.getString("homePts");
+                String awayScore = matchJSON.getString("awayPts");
                 String startTime = matchJSON.getString("startTime");
-                String league = matchJSON.getString("league");
+                String league = matchJSON.getString("leagueID");
 
                 Match match = new Match(homeTeam, awayTeam, Integer.parseInt(homeScore), Integer.parseInt(awayScore), startTime, league);
                 matches.add(match);

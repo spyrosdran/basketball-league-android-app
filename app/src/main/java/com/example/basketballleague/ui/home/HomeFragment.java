@@ -55,8 +55,6 @@ public class HomeFragment extends Fragment {
 
         }
 
-        upcomingMatchesArray.add(new Match("PAOK", "AEK", 0,0, "2022-07-03 18:00:00", "Greek HEBA A1"));
-
         if(upcomingMatchesArray.isEmpty())
             Log.d("MyApp","Upcoming Matches Array is empty");
 

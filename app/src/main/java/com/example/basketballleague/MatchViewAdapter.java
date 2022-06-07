@@ -52,8 +52,8 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
                 Match match = matches.get(position);
                 intent.putExtra("homeID", match.getHomeTeam());
                 intent.putExtra("awayID", match.getAwayTeam());
-                intent.putExtra("homeScore", match.getHomeTeamScore());
-                intent.putExtra("awayScore", match.getAwayTeamScore());
+                intent.putExtra("homeScore",Integer.toString(match.getHomeTeamScore()));
+                intent.putExtra("awayScore", Integer.toString(match.getAwayTeamScore()));
                 intent.putExtra("matchDate", match.getMatchDate());
                 intent.putExtra("matchLeague", match.getLeagueName());
                 view.getContext().startActivity(intent);
@@ -77,7 +77,7 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
         ImageView homePhoto;
         ImageView awayPhoto;
         TextView leagueName;
-        Button date;
+        TextView date;
 
         public MatchViewHolder(@NonNull View itemView) {
             super(itemView);
