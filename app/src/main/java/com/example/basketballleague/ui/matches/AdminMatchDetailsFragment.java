@@ -2,6 +2,7 @@ package com.example.basketballleague.ui.matches;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,21 +24,25 @@ import java.util.List;
 public class AdminMatchDetailsFragment extends Fragment {
 
     private AdminMatchDetailsViewModel mViewModel;
-    private int matchID;
 
     private EventList eventList;
     private TeamMembers team;
     private Button bp1, bp2, bp3, bp4, bp5;
     private Button buttonFT, button2pt, button3pt, buttonIn, buttonOut, submitButton, undoButton;
     private String selectedTeam, selectedEvent, selectedPlayer, typeOfShoot;
+    private Intent matchIntent;
 
-    public static AdminMatchDetailsFragment newInstance() {
-        return new AdminMatchDetailsFragment();
+    public static AdminMatchDetailsFragment newInstance(Intent intent) {
+        return new AdminMatchDetailsFragment(intent);
     }
 
-    /*public void onClickHome(View view) {connect to button
+    public AdminMatchDetailsFragment(Intent intent) {
+        matchIntent = intent;
+    }
+
+    public void onClickHome(View view) {
         selectedTeam = "HOME";
-         team = new TeamMembers(selectedTeam);
+         team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
 
         List<String> playerList = team.getAllPlayers();
         if (playerList.size() == 5){
@@ -51,9 +56,9 @@ public class AdminMatchDetailsFragment extends Fragment {
         }
     }
 
-    public void onClickAway(View view) {connect to button
+    public void onClickAway(View view) {
         selectedTeam = "AWAY";
-        team = new TeamMembers(selectedTeam);
+        team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
 
         List<String> playerList = team.getAllPlayers();
         if (playerList.size() == 5){
@@ -65,7 +70,7 @@ public class AdminMatchDetailsFragment extends Fragment {
         }else {
             Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
         }
-    }*/
+    }
 
 
 
@@ -160,8 +165,8 @@ public class AdminMatchDetailsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         eventList = new EventList();
-        //selectedTeam = "HOME";
-        team = new TeamMembers(/*selectedTeam*/);
+        selectedTeam = "HOME";
+        team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
 
         bp1 = (Button) getActivity().findViewById(R.id.player1);
         bp1.setVisibility(View.VISIBLE);

@@ -1,14 +1,13 @@
 package com.example.basketballleague;
 
 import android.os.StrictMode;
-import android.util.Log;
 
-import org.json.JSONArray;
+import com.example.basketballleague.ui.matches.PlayerInCourt;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -127,17 +126,24 @@ public class okHttpHandlerAdmin {
         Response response = client.newCall(request).execute();
     }
 
-    /*public ArrayList<String> getInCourtTeamPlayers(String url, String homeaway){
+    public ArrayList<PlayerInCourt> getInCourtTeamPlayers(String matchID, String homeaway) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getInCourtTeamPlayers.php?").method("POST", body).build();
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getInCourtTeamPlayers.php?matchID=" + matchID + "&homeaway=" + homeaway).method("POST", body).build();
         Response response = client.newCall(request).execute();
         String data = response.body().string();
 
-        ArrayList<String> inCourtTeamPlayers = new ArrayList<>();
+        ArrayList<PlayerInCourt> inCourtTeamPlayers = new ArrayList<>();
 
         try {
+            JSONObject json = new JSONObject(data);
+            Iterator<String> keys = json.keys();
 
+            while (keys.hasNext()) {
+                String playerName = keys.next();
+                int playerID = Integer.parseInt(json.getString(playerName));
+                inCourtTeamPlayers.add(new PlayerInCourt(playerID,playerName));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -145,7 +151,7 @@ public class okHttpHandlerAdmin {
         return inCourtTeamPlayers;
     }
 
-    public void submitEvent(String s){
+    /*public void submitEvent(String s){
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
         Request request = new Request.Builder().url("http://" + IP + "/basketleague/submitEvent.php?matchID=" + matchID).method("POST", body).build();

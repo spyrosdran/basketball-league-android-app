@@ -61,7 +61,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.adminTabLayout);
         FrameLayout simpleFrameLayout = findViewById(R.id.simpleFrameLayout);
 
-        Fragment fragment = new AdminMatchDetailsFragment();
+        Fragment fragment = new AdminMatchDetailsFragment(getIntent());
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.simpleFrameLayout, fragment);
@@ -75,7 +75,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (tab.getPosition()) {
                     case 0:
-                        fragment = new AdminMatchDetailsFragment();
+                        fragment = new AdminMatchDetailsFragment(getIntent());
                         break;
                     case 1:
                         fragment = new AdminLiveCommentaryFragment();
