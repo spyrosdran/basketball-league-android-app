@@ -14,7 +14,7 @@
 			$matches[$row['matchID']]['homePts'] = $row['homePts'];
 			$matches[$row['matchID']]['awayPts'] = $row['awayPts'];
 			$matches[$row['matchID']]['startTime'] = $row['startTime'];
-			$matches[$row['matchID']]['leagueID'] = "Greek HEBA A1";
+			$matches[$row['matchID']]['league'] = "Greek HEBA A1";
 			$matches[$row['matchID']]['status'] = $row['status'];
 		
 	}

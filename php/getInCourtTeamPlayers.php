@@ -38,8 +38,7 @@
 		$result = $mysqli->query($query);
 		$row = $result->fetch_assoc();
 		
-		$players[$row['name']] = $row['name'];
-		$players[$playerID] = $playerID;
+		$players[$row['name']] = $playerID;
 	}
 	
 	header("Content-Type: application/json");
