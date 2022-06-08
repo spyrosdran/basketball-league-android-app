@@ -49,10 +49,13 @@ public class okHttpHandlerAdmin {
                 String awayTeam = matchJSON.getString("awayID");
                 String homeScore = matchJSON.getString("homePts");
                 String awayScore = matchJSON.getString("awayPts");
+                String homeImageURI = matchJSON.getString("homeImageURI");
+                String awayImageURI = matchJSON.getString("awayImageURI");
+                String status = matchJSON.getString("status");
                 String startTime = matchJSON.getString("startTime");
                 String league = matchJSON.getString("league");
 
-                Match match = new Match(matchID, homeTeam, awayTeam, Integer.parseInt(homeScore), Integer.parseInt(awayScore), startTime, league);
+                Match match = new Match(matchID, homeTeam, awayTeam, Integer.parseInt(homeScore), Integer.parseInt(awayScore), homeImageURI, awayImageURI, startTime, league, status);
                 matches.add(match);
             } while (keys.hasNext());
 

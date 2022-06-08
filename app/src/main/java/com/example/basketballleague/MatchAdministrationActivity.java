@@ -6,9 +6,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.basketballleague.ui.matches.AdminLineUpFragment;
@@ -18,6 +21,7 @@ import com.example.basketballleague.ui.matches.TeamMembers;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MatchAdministrationActivity extends AppCompatActivity {
@@ -32,8 +36,26 @@ public class MatchAdministrationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String score = intent.getStringExtra("homeScore") + " - " + intent.getStringExtra("awayScore");
+        ImageView homePhoto = findViewById(R.id.homePhoto);
+        ImageView awayPhoto = findViewById(R.id.awayPhoto);
         TextView scoreView = findViewById(R.id.score);
         scoreView.setText(score);
+
+        try {
+            URL imgURL = new URL(intent.getStringExtra("homeImageURI"));
+            Bitmap icon_val = BitmapFactory.decodeStream(imgURL.openConnection().getInputStream());
+            homePhoto.setImageBitmap(Bitmap.createScaledBitmap(icon_val,40,40,false));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            URL imgURL = new URL(intent.getStringExtra("awayImageURI"));
+            Bitmap icon_val = BitmapFactory.decodeStream(imgURL.openConnection().getInputStream());
+            awayPhoto.setImageBitmap(Bitmap.createScaledBitmap(icon_val,40,40,false));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
         String matchID = intent.getStringExtra("matchID");
