@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragmemt_live_matches.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin_line_up.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.264" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_matches.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/match_card.xml" value="0.18704710144927536" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.2265" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />

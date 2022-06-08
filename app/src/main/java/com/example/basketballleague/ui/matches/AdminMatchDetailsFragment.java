@@ -23,32 +23,57 @@ import java.util.List;
 public class AdminMatchDetailsFragment extends Fragment {
 
     private AdminMatchDetailsViewModel mViewModel;
+    private int matchID;
 
     private EventList eventList;
     private TeamMembers team;
     private Button bp1, bp2, bp3, bp4, bp5;
     private Button buttonFT, button2pt, button3pt, buttonIn, buttonOut, submitButton, undoButton;
-    private String selectedEvent, selectedPlayer, typeOfShoot;
+    private String selectedTeam, selectedEvent, selectedPlayer, typeOfShoot;
 
     public static AdminMatchDetailsFragment newInstance() {
         return new AdminMatchDetailsFragment();
     }
 
-    public void onClickBP1(View view) {
-        selectedPlayer = bp1.getText().toString();
+    /*public void onClickHome(View view) {connect to button
+        selectedTeam = "HOME";
+         team = new TeamMembers(selectedTeam);
+
+        List<String> playerList = team.getAllPlayers();
+        if (playerList.size() == 5){
+            bp1.setText(playerList.get(0));
+            bp2.setText(playerList.get(1));
+            bp3.setText(playerList.get(2));
+            bp4.setText(playerList.get(3));
+            bp5.setText(playerList.get(4));
+        }else {
+            Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
+        }
     }
-    public void onClickBP2(View view) {
-        selectedPlayer = bp2.getText().toString();
-    }
-    public void onClickBP3(View view) {
-        selectedPlayer = bp3.getText().toString();
-    }
-    public void onClickBP4(View view) {
-        selectedPlayer = bp4.getText().toString();
-    }
-    public void onClickBP5(View view) {
-        selectedPlayer = bp5.getText().toString();
-    }
+
+    public void onClickAway(View view) {connect to button
+        selectedTeam = "AWAY";
+        team = new TeamMembers(selectedTeam);
+
+        List<String> playerList = team.getAllPlayers();
+        if (playerList.size() == 5){
+            bp1.setText(playerList.get(0));
+            bp2.setText(playerList.get(1));
+            bp3.setText(playerList.get(2));
+            bp4.setText(playerList.get(3));
+            bp5.setText(playerList.get(4));
+        }else {
+            Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
+        }
+    }*/
+
+
+
+    public void onClickBP1(View view) {selectedPlayer = bp1.getText().toString();}
+    public void onClickBP2(View view) {selectedPlayer = bp2.getText().toString();}
+    public void onClickBP3(View view) {selectedPlayer = bp3.getText().toString();}
+    public void onClickBP4(View view) {selectedPlayer = bp4.getText().toString();}
+    public void onClickBP5(View view) {selectedPlayer = bp5.getText().toString();}
 
     public void onClickUndo(View view) {
         selectedPlayer = " ";
@@ -135,7 +160,8 @@ public class AdminMatchDetailsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         eventList = new EventList();
-        team = new TeamMembers();
+        //selectedTeam = "HOME";
+        team = new TeamMembers(/*selectedTeam*/);
 
         bp1 = (Button) getActivity().findViewById(R.id.player1);
         bp1.setVisibility(View.VISIBLE);

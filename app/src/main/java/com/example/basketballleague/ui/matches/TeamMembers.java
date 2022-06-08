@@ -6,7 +6,18 @@ import java.util.List;
 public class TeamMembers {
     private ArrayList<String> players;
 
-    public TeamMembers(){
+    public TeamMembers(/*String homeaway*/){
+        /*
+        String url= "http://"";
+
+        try {
+            OkHttpHandlerAdmin okHttpHandler = new OkHttpHandlerAdmin();
+            players = okHttpHandler.getInCourtTeamPlayers(url,homeaway);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        */
         players = new ArrayList<String>();
         players.add("ANTETOKOUMBO");
         players.add("LEBRON");

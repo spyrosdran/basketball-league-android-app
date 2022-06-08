@@ -126,4 +126,30 @@ public class okHttpHandlerAdmin {
         Request request = new Request.Builder().url("http://" + IP + "/basketleague/changePlayers.php?changeOut=" + changeOut + "&changeIn=" + changeIn +"matchID=" + matchID).method("POST", body).build();
         Response response = client.newCall(request).execute();
     }
+
+    /*public ArrayList<String> getInCourtTeamPlayers(String url, String homeaway){
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getInCourtTeamPlayers.php?").method("POST", body).build();
+        Response response = client.newCall(request).execute();
+        String data = response.body().string();
+
+        ArrayList<String> inCourtTeamPlayers = new ArrayList<>();
+
+        try {
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return inCourtTeamPlayers;
+    }
+
+    public void submitEvent(String s){
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/submitEvent.php?matchID=" + matchID).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+    }
+    */
 }
