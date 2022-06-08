@@ -43,6 +43,26 @@ public class HomeFragment extends Fragment {
         //Fragment Home Setup - R1 (showing matches)
 
         //Getting Upcoming Matches Data
+        RecyclerView liveMatches = getActivity().findViewById(R.id.live_matches);
+        ArrayList<Match> liveMatchesArray = new ArrayList<>();
+
+        try {
+            liveMatchesArray = okHttpHandlerAdmin.getMatchesData("getLiveMatches.php");
+            Log.d("My App","Successful http request");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
+        if(liveMatchesArray.isEmpty())
+            Log.d("MyApp","Upcoming Matches Array is empty");
+
+        //Adapting The Match Data
+        MatchViewAdapter liveMatchViewAdapter = new MatchViewAdapter(this.getActivity(), liveMatchesArray);
+        liveMatches.setAdapter(liveMatchViewAdapter);
+        liveMatches.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+
+        //Getting Upcoming Matches Data
         RecyclerView upcomingMatches = getActivity().findViewById(R.id.upcoming_matches);
         ArrayList<Match> upcomingMatchesArray = new ArrayList<>();
 

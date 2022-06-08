@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +63,7 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
                 intent.putExtra("awayImageURI", match.getAwayImageURI());
                 intent.putExtra("matchDate", match.getMatchDate());
                 intent.putExtra("matchLeague", match.getLeagueName());
+                intent.putExtra("status", match.getStatus());
                 view.getContext().startActivity(intent);
             }
         });
@@ -105,6 +107,13 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
             homeScore.setText(Integer.toString(match.getHomeTeamScore()));
             awayScore.setText(Integer.toString(match.getAwayTeamScore()));
             leagueName.setText(match.getLeagueName());
+
+            if (match.getStatus().equals("upcoming") || match.getStatus().equals("ended"))
+                date.setText(match.getMatchDate());
+            else {
+                date.setText("Now Live >");
+                date.setTextColor(Color.parseColor("#FF0000"));
+            }
 
             try {
                 URL imgURL = new URL(match.getHomeImageURI());

@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +42,13 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         ImageView awayPhoto = findViewById(R.id.awayPhoto);
         TextView scoreView = findViewById(R.id.score);
         scoreView.setText(score);
+        Button startButton = findViewById(R.id.start_button);
+        if((intent.getStringExtra("status")).equals("ended")){
+            startButton.setVisibility(View.GONE);
+        }
+        else if((intent.getStringExtra("status")).equals("live")){
+            startButton.setText("END MATCH");
+        }
 
         try {
             URL imgURL = new URL(intent.getStringExtra("homeImageURI"));
