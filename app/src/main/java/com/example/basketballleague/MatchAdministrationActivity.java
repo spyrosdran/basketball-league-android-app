@@ -37,8 +37,6 @@ public class MatchAdministrationActivity extends AppCompatActivity {
 
         okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
         String matchID = intent.getStringExtra("matchID");
-        //String myIP = "192.168.1.2";
-        //String url = "http://" + myIP + "/basketleague/getPlayersData.php?matchID=" + matchID;
         ArrayList<String> allPlayers = new ArrayList<>();
 
         try {
