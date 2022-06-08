@@ -50,7 +50,7 @@ public class okHttpHandlerAdmin {
                 String homeScore = matchJSON.getString("homePts");
                 String awayScore = matchJSON.getString("awayPts");
                 String startTime = matchJSON.getString("startTime");
-                String league = matchJSON.getString("leagueID");
+                String league = matchJSON.getString("league");
 
                 Match match = new Match(matchID, homeTeam, awayTeam, Integer.parseInt(homeScore), Integer.parseInt(awayScore), startTime, league);
                 matches.add(match);
