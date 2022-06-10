@@ -161,4 +161,37 @@ public class okHttpHandlerAdmin {
         Response response = client.newCall(request).execute();
     }
     */
+
+    public ArrayList<PlayerInCourt> getAllTeamPlayers(String team) throws IOException {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getAllTeamPlayers.php?team=" + team).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+        String data = response.body().string();
+
+        ArrayList<PlayerInCourt> players = new ArrayList<>();
+
+        try {
+            JSONObject json = new JSONObject(data);
+            Iterator<String> keys = json.keys();
+
+            while (keys.hasNext()) {
+                String playerID = keys.next();
+                int playerIDInt = Integer.parseInt(playerID);
+
+                JSONObject playerJSON = json.getJSONObject(playerID);
+
+                String playerName = playerJSON.getString("name");
+                String playerPosition = playerJSON.getString(("position"));
+                String playerTeam = playerJSON.getString("teamID");
+
+                players.add(new PlayerInCourt(playerIDInt, playerName, playerPosition, playerTeam));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return players;
+    }
+
 }

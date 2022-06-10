@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.basketballleague.ui.matches.AdminLineUpFragment;
 import com.example.basketballleague.ui.matches.AdminLiveCommentaryFragment;
 import com.example.basketballleague.ui.matches.AdminMatchDetailsFragment;
+import com.example.basketballleague.ui.matches.PlayerInCourt;
 import com.example.basketballleague.ui.matches.TeamMembers;
 import com.google.android.material.tabs.TabLayout;
 
@@ -30,6 +31,8 @@ public class MatchAdministrationActivity extends AppCompatActivity {
 
     private ArrayList<String> homeTeam = new ArrayList<>();
     private ArrayList<String> awayTeam = new ArrayList<>();
+    private ArrayList<PlayerInCourt> home = new ArrayList<>();
+    private ArrayList<PlayerInCourt> away = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         String matchID = intent.getStringExtra("matchID");
         ArrayList<String> allPlayers = new ArrayList<>();
 
+        //Getting each team's playing players and separating their names in 2 different arrays
         try {
             allPlayers = okHttpHandlerAdmin.getPlayersData(intent.getStringExtra("matchID"));
             Log.d("My App","Successful http request for players");
@@ -85,6 +89,19 @@ public class MatchAdministrationActivity extends AppCompatActivity {
             awayTeam.add(allPlayers.get(i));
         }
 
+        //Getting All Home Players with their details
+        try {
+            home = okHttpHandlerAdmin.getAllTeamPlayers(getIntent().getStringExtra("homeID"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Getting All Away Players with their details
+        try {
+            away = okHttpHandlerAdmin.getAllTeamPlayers(getIntent().getStringExtra("awayID"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         TabLayout tabLayout = findViewById(R.id.adminTabLayout);
