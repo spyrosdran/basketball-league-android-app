@@ -24,10 +24,10 @@ public class TeamMembers {
     }
 
 
-    public List<String> getAllPlayers() {
-        List<String> temp = new ArrayList<String>();
+    public List<PlayerInCourt> getAllPlayers() {
+        List<PlayerInCourt> temp = new ArrayList<PlayerInCourt>();
         for (int i=0; i<players.size(); i++) {
-            temp.add(players.get(i).getPlayerName());
+            temp.add(players.get(i));
         }
         return temp;
     }

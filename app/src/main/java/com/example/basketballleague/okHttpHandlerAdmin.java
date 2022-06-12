@@ -161,13 +161,12 @@ public class okHttpHandlerAdmin {
         return inCourtTeamPlayers;
     }
 
-    /*public void submitEvent(String s){
+    public void submitEvent(int matchID, int playerID, String type, int minute) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-        Request request = new Request.Builder().url("http://" + IP + "/basketleague/submitEvent.php?matchID=" + matchID).method("POST", body).build();
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/submitEvent.php?matchid=" + matchID + "&playerid=" + playerID + "&type=\"" + type + "\"" + "&minute=" + minute).method("POST", body).build();
         Response response = client.newCall(request).execute();
     }
-    */
 
     public ArrayList<PlayerInCourt> getAllTeamPlayers(String team) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();

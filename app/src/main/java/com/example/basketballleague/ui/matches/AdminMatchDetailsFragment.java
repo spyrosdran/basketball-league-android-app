@@ -18,8 +18,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.basketballleague.R;
+import com.example.basketballleague.okHttpHandlerAdmin;
+import com.google.android.material.button.MaterialButton;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class AdminMatchDetailsFragment extends Fragment {
 
@@ -29,7 +33,9 @@ public class AdminMatchDetailsFragment extends Fragment {
     private TeamMembers team;
     private Button bp1, bp2, bp3, bp4, bp5;
     private Button buttonFT, button2pt, button3pt, buttonIn, buttonOut, submitButton, undoButton;
-    private String selectedTeam, selectedEvent, selectedPlayer, typeOfShoot;
+    private String selectedTeam, selectedEvent, typeOfShoot;
+    private List<PlayerInCourt> playerList;
+    private PlayerInCourt selectedPlayer;
     private Intent matchIntent;
 
     public static AdminMatchDetailsFragment newInstance(Intent intent) {
@@ -43,14 +49,13 @@ public class AdminMatchDetailsFragment extends Fragment {
     public void onClickHome(View view) {
         selectedTeam = "HOME";
          team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
-
-        List<String> playerList = team.getAllPlayers();
+        playerList = team.getAllPlayers();
         if (playerList.size() == 5){
-            bp1.setText(playerList.get(0));
-            bp2.setText(playerList.get(1));
-            bp3.setText(playerList.get(2));
-            bp4.setText(playerList.get(3));
-            bp5.setText(playerList.get(4));
+            bp1.setText(playerList.get(0).getPlayerName());
+            bp2.setText(playerList.get(1).getPlayerName());
+            bp3.setText(playerList.get(2).getPlayerName());
+            bp4.setText(playerList.get(3).getPlayerName());
+            bp5.setText(playerList.get(4).getPlayerName());
         }else {
             Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
         }
@@ -60,13 +65,13 @@ public class AdminMatchDetailsFragment extends Fragment {
         selectedTeam = "AWAY";
         team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
 
-        List<String> playerList = team.getAllPlayers();
+        playerList = team.getAllPlayers();
         if (playerList.size() == 5){
-            bp1.setText(playerList.get(0));
-            bp2.setText(playerList.get(1));
-            bp3.setText(playerList.get(2));
-            bp4.setText(playerList.get(3));
-            bp5.setText(playerList.get(4));
+            bp1.setText(playerList.get(0).getPlayerName());
+            bp2.setText(playerList.get(1).getPlayerName());
+            bp3.setText(playerList.get(2).getPlayerName());
+            bp4.setText(playerList.get(3).getPlayerName());
+            bp5.setText(playerList.get(4).getPlayerName());
         }else {
             Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
         }
@@ -74,14 +79,14 @@ public class AdminMatchDetailsFragment extends Fragment {
 
 
 
-    public void onClickBP1(View view) {selectedPlayer = bp1.getText().toString();}
-    public void onClickBP2(View view) {selectedPlayer = bp2.getText().toString();}
-    public void onClickBP3(View view) {selectedPlayer = bp3.getText().toString();}
-    public void onClickBP4(View view) {selectedPlayer = bp4.getText().toString();}
-    public void onClickBP5(View view) {selectedPlayer = bp5.getText().toString();}
+    public void onClickBP1(View view) {selectedPlayer = playerList.get(0);}
+    public void onClickBP2(View view) {selectedPlayer = playerList.get(1);}
+    public void onClickBP3(View view) {selectedPlayer = playerList.get(2);}
+    public void onClickBP4(View view) {selectedPlayer = playerList.get(3);}
+    public void onClickBP5(View view) {selectedPlayer = playerList.get(4);}
 
     public void onClickUndo(View view) {
-        selectedPlayer = " ";
+        selectedPlayer = new PlayerInCourt();
         selectedEvent = " ";
         buttonFT.setVisibility(View.INVISIBLE);
         button2pt.setVisibility(View.INVISIBLE);
@@ -91,22 +96,33 @@ public class AdminMatchDetailsFragment extends Fragment {
         submitButton.setVisibility(View.VISIBLE);
     }
 
-    public void onClickSubmit(View view) {
+    public void onClickSubmit(View view) throws IOException {
         Spinner dropDown  = (Spinner) getActivity().findViewById(R.id.events);
         selectedEvent = String.valueOf(dropDown.getSelectedItem());
-        if (selectedEvent == "SHOOT"){
+        if (selectedEvent.equals("SHOOT")){
             buttonFT.setVisibility(View.VISIBLE);
             button2pt.setVisibility(View.VISIBLE);
             button3pt.setVisibility(View.VISIBLE);
             submitButton.setVisibility(View.INVISIBLE);
             Toast.makeText(getActivity(), "Choose the type of shoot and then press IN or OUT.", Toast.LENGTH_SHORT).show();
         }else {
-            if (selectedPlayer == " "){
+            if (selectedPlayer.getPlayerName().equals("")){
                 Toast.makeText(getActivity(), "Please select a player before submitting an event!", Toast.LENGTH_SHORT).show();
             }else {
-                Toast.makeText(getActivity(), selectedPlayer + ", " + selectedEvent, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + selectedEvent, Toast.LENGTH_SHORT).show();
+
+                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+                String matchIDstr = matchIntent.getExtras().getString("matchID");
+
+                int minute = 2;
+
+                //TODO: add code for minute calculation
+
+                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedEvent.toLowerCase(Locale.ROOT), minute);
+
                 selectedEvent = " ";
-                selectedPlayer = " ";
+                selectedPlayer = new PlayerInCourt();
             }
         }
     }
@@ -114,7 +130,7 @@ public class AdminMatchDetailsFragment extends Fragment {
     public void onClickFT(View view) {
         buttonIn.setVisibility(View.VISIBLE);
         buttonOut.setVisibility(View.VISIBLE);
-        typeOfShoot = "FT";
+        typeOfShoot = "1pt";
     }
     public void onClick2pt(View view) {
         buttonIn.setVisibility(View.VISIBLE);
@@ -127,13 +143,24 @@ public class AdminMatchDetailsFragment extends Fragment {
         typeOfShoot = "3pt";
     }
 
-    public void onClickIN(View view) {
-        if (selectedPlayer == " "){
+    public void onClickIN(View view) throws IOException {
+        if (selectedPlayer.getPlayerName() == ""){
             Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getActivity(), selectedPlayer + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
+
+            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+            String matchIDstr = matchIntent.getExtras().getString("matchID");
+
+            int minute = 2;
+
+            //TODO: add code for minute calculation
+
+            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
+
             selectedEvent = " ";
-            selectedPlayer = " ";
+            selectedPlayer = new PlayerInCourt();
             buttonFT.setVisibility(View.INVISIBLE);
             button2pt.setVisibility(View.INVISIBLE);
             button3pt.setVisibility(View.INVISIBLE);
@@ -144,13 +171,24 @@ public class AdminMatchDetailsFragment extends Fragment {
         }
     }
 
-    public void onClickOUT(View view) {
-        if (selectedPlayer == " "){
+    public void onClickOUT(View view) throws IOException {
+        if (selectedPlayer.getPlayerName() == ""){
             Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getActivity(), selectedPlayer + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
+
+            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+            String matchIDstr = matchIntent.getExtras().getString("matchID");
+
+            int minute = 2;
+
+            //TODO: add code for minute calculation
+
+            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
+
             selectedEvent = " ";
-            selectedPlayer = " ";
+            selectedPlayer = new PlayerInCourt();
             buttonFT.setVisibility(View.INVISIBLE);
             button2pt.setVisibility(View.INVISIBLE);
             button3pt.setVisibility(View.INVISIBLE);
@@ -179,7 +217,7 @@ public class AdminMatchDetailsFragment extends Fragment {
         bp5 = (Button) getActivity().findViewById(R.id.player5);
         bp5.setVisibility(View.VISIBLE);
 
-        selectedPlayer = " ";
+        selectedPlayer = new PlayerInCourt();
         selectedEvent = " ";
         buttonFT = (Button) getActivity().findViewById(R.id.buttonFT);
         buttonFT.setVisibility(View.INVISIBLE);
@@ -196,13 +234,13 @@ public class AdminMatchDetailsFragment extends Fragment {
         undoButton = (Button) getActivity().findViewById(R.id.undoButton);
         undoButton.setVisibility(View.VISIBLE);
 
-        List<String> playerList = team.getAllPlayers();
+        playerList = team.getAllPlayers();
         if (playerList.size() == 5){
-            bp1.setText(playerList.get(0));
-            bp2.setText(playerList.get(1));
-            bp3.setText(playerList.get(2));
-            bp4.setText(playerList.get(3));
-            bp5.setText(playerList.get(4));
+            bp1.setText(playerList.get(0).getPlayerName());
+            bp2.setText(playerList.get(1).getPlayerName());
+            bp3.setText(playerList.get(2).getPlayerName());
+            bp4.setText(playerList.get(3).getPlayerName());
+            bp5.setText(playerList.get(4).getPlayerName());
         }else {
             Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
         }
@@ -212,6 +250,18 @@ public class AdminMatchDetailsFragment extends Fragment {
                 android.R.layout.simple_spinner_dropdown_item,
                 eventList.getAllEvents());
         dropDown.setAdapter(arrayAdapter);
+
+        Button submitButton = (Button) getActivity().findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    onClickSubmit(view);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
