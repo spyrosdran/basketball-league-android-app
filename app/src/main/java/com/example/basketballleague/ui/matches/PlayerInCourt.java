@@ -6,6 +6,12 @@ public class PlayerInCourt {
     private String position;
     private String teamID;
 
+    public PlayerInCourt(){
+        playerID = 0;
+        playerName = "";
+        teamID = "";
+        position = "";
+    }
     public PlayerInCourt(int id, String name) {
         playerID = id;
         playerName = name;
