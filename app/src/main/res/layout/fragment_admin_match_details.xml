@@ -161,22 +161,20 @@
             app:layout_constraintTop_toTopOf="@+id/button2pt" />
 
         <Button
-            android:textSize="8sp"
             android:id="@+id/buttonIN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100sp"
-            android:layout_marginEnd="30sp"
             android:backgroundTint="@color/orangeForeground"
             android:onClick="onClickIN"
             android:text="IN"
+            android:textSize="8sp"
             app:layout_constraintBottom_toTopOf="@+id/submitButton"
-            app:layout_constraintEnd_toStartOf="@+id/buttonOUT"
+            app:layout_constraintEnd_toStartOf="@+id/button2pt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2pt" />
 
         <Button
-            android:textSize="8sp"
             android:id="@+id/buttonOUT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -184,8 +182,10 @@
             android:backgroundTint="@color/orangeForeground"
             android:onClick="onClickOUT"
             android:text="OUT"
+            android:textSize="8sp"
             app:layout_constraintBottom_toTopOf="@+id/submitButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button2pt"
             app:layout_constraintTop_toBottomOf="@+id/button2pt" />
 
         <Button
