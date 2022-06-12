@@ -169,8 +169,7 @@
             android:onClick="onClickIN"
             android:text="IN"
             android:textSize="8sp"
-            app:layout_constraintBottom_toTopOf="@+id/submitButton"
-            app:layout_constraintEnd_toStartOf="@+id/button2pt"
+            app:layout_constraintBottom_toTopOf="@+id/undoButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2pt" />
 
@@ -183,10 +182,12 @@
             android:onClick="onClickOUT"
             android:text="OUT"
             android:textSize="8sp"
-            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonIN"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button2pt"
-            app:layout_constraintTop_toBottomOf="@+id/button2pt" />
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toEndOf="@+id/buttonIN"
+            app:layout_constraintTop_toBottomOf="@+id/button2pt"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/homeTeamBtn"
