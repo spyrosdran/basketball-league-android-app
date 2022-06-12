@@ -29,10 +29,10 @@
 	$dbh = mysqli_connect($host,$uname,$pass) or die("cannot connect");
 	mysqli_select_db($dbh, $dbname);
 			
-	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES('" . $changeOutPlayerID . "','" . $matchID . "','change out', '" . $date . "');";
+	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES(" . $changeOutPlayerID . "," . $matchID . ",'change out', '" . $date . "');";
 	mysqli_query($dbh, $sql);
 	
-	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES('" . $changeInPlayerID . "','" . $matchID . "','change in', '" . $date . "');";
+	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES(" . $changeInPlayerID . "," . $matchID . ",'change in', '" . $date . "');";
 	mysqli_query($dbh, $sql);
 	
 	mysqli_close($dbh);
