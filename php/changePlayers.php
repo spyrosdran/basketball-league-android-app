@@ -1,23 +1,23 @@
 <?php
 	
 
-	$changeOut = $_GET["changeOut"];
-	$changeIn = $_GET["changeIn"];
+	$changeOutName = $_GET["changeOut"];
+	$changeInName = $_GET["changeIn"];
 	$matchID = $_GET["matchID"];
 	
 	//Retrieving the Player who goes out
 	$mysqli = new mysqli("localhost", "root", "", "basketleague");
-	$query = "SELECT `ID` FROM `player` WHERE `name` = '" . $changeOut . "';";
+	$query = "SELECT `ID` FROM `player` WHERE `name` = '" . $changeOutName . "';";
 	$result = $mysqli->query($query);
 	$row = $result->fetch_assoc();
-	$changeOut = $row["ID"];
+	$changeOutPlayerID = $row["ID"];
 	
 	//Retrieving the Player who goes in
 	$mysqli = new mysqli("localhost", "root", "", "basketleague");
-	$query = "SELECT `ID` FROM `player` WHERE `name` = '" . $changeIn . "';";
+	$query = "SELECT `ID` FROM `player` WHERE `name` = '" . $changeInName . "';";
 	$result = $mysqli->query($query);
 	$row = $result->fetch_assoc();
-	$changeIn = $row["ID"];
+	$changeInPlayerID = $row["ID"];
 
 	$host="localhost";
 	$uname="root";
@@ -29,10 +29,10 @@
 	$dbh = mysqli_connect($host,$uname,$pass) or die("cannot connect");
 	mysqli_select_db($dbh, $dbname);
 			
-	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES('" . $changeOut . "','" . $matchID . "','change out', '" . $date . "')";
+	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES('" . $changeOutPlayerID . "','" . $matchID . "','change out', '" . $date . "');";
 	mysqli_query($dbh, $sql);
 	
-	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES('" . $changeIn . "','" . $matchID . "','change in', '" . $date . "')";
+	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES('" . $changeInPlayerID . "','" . $matchID . "','change in', '" . $date . "');";
 	mysqli_query($dbh, $sql);
 	
 	mysqli_close($dbh);

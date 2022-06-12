@@ -16,6 +16,19 @@
 			$matches[$row['matchID']]['startTime'] = $row['startTime'];
 			$matches[$row['matchID']]['league'] = "Greek HEBA A1";
 			$matches[$row['matchID']]['status'] = $row['status'];
+			
+			$q= "SELECT `badgeURI` FROM `team` WHERE `name` = '" . $row['homeID'] . "'";
+			$r = $mysqli->query($q);
+			$rowImage = $r->fetch_assoc();
+			$homeImageURI = $rowImage['badgeURI'];
+			
+			$q= "SELECT `badgeURI` FROM `team` WHERE `name` = '" . $row['awayID'] . "'";
+			$r = $mysqli->query($q);
+			$rowImage = $r->fetch_assoc();
+			$awayImageURI = $rowImage['badgeURI'];
+			
+			$matches[$row['matchID']]['homeImageURI'] = $homeImageURI;
+			$matches[$row['matchID']]['awayImageURI'] = $awayImageURI;
 		
 	}
 	

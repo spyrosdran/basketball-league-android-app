@@ -19,7 +19,7 @@ import okhttp3.Response;
 
 public class okHttpHandlerAdmin {
 
-    String IP = "192.168.1.2";
+    String IP = "192.168.1.129";
 
     public okHttpHandlerAdmin() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -126,6 +126,13 @@ public class okHttpHandlerAdmin {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
         Request request = new Request.Builder().url("http://" + IP + "/basketleague/changePlayers.php?changeOut=" + changeOut + "&changeIn=" + changeIn +"matchID=" + matchID).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+    }
+
+    public void changeMatchStatus(String status, String matchID) throws IOException {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/startEndMatch.php?status=" + status + "&matchID=" + matchID).method("POST", body).build();
         Response response = client.newCall(request).execute();
     }
 
