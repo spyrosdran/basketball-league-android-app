@@ -111,15 +111,20 @@ public class AdminMatchDetailsFragment extends Fragment {
             if (selectedPlayer.getPlayerName().equals("")){
                 Toast.makeText(getActivity(), "Please select a player before submitting an event!", Toast.LENGTH_SHORT).show();
             }else {
-                Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + selectedEvent, Toast.LENGTH_SHORT).show();
-
-                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
-
-                String matchIDstr = matchIntent.getExtras().getString("matchID");
 
                 int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
-                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedEvent.toLowerCase(Locale.ROOT), minute);
+                if(minute > 0 && minute <= 40){
+                    Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + selectedEvent, Toast.LENGTH_SHORT).show();
+
+                    okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+                    String matchIDstr = matchIntent.getExtras().getString("matchID");
+                    http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedEvent.toLowerCase(Locale.ROOT), minute);
+                }
+                else{
+                    Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
+                }
 
                 selectedEvent = " ";
                 selectedPlayer = new PlayerInCourt();
@@ -148,15 +153,20 @@ public class AdminMatchDetailsFragment extends Fragment {
         if (selectedPlayer.getPlayerName() == ""){
             Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
-
-            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
-
-            String matchIDstr = matchIntent.getExtras().getString("matchID");
 
             int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
-            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
+            if(minute > 0 && minute <= 40){
+                Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
+
+                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+                String matchIDstr = matchIntent.getExtras().getString("matchID");
+                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
+            }
+            else{
+                Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
+            }
 
             selectedEvent = " ";
             selectedPlayer = new PlayerInCourt();
@@ -174,15 +184,22 @@ public class AdminMatchDetailsFragment extends Fragment {
         if (selectedPlayer.getPlayerName() == ""){
             Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
-
-            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
-
-            String matchIDstr = matchIntent.getExtras().getString("matchID");
 
             int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
-            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
+            if(minute > 0 && minute <= 40){
+                Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
+
+                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+                String matchIDstr = matchIntent.getExtras().getString("matchID");
+                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
+            }
+            else{
+                Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
+            }
+
+
 
             selectedEvent = " ";
             selectedPlayer = new PlayerInCourt();
