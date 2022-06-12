@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.basketballleague.R;
@@ -31,6 +32,7 @@ public class AdminMatchDetailsFragment extends Fragment {
 
     private EventList eventList;
     private TeamMembers team;
+    private Button buttonH,buttonA;
     private Button bp1, bp2, bp3, bp4, bp5;
     private Button buttonFT, button2pt, button3pt, buttonIn, buttonOut, submitButton, undoButton;
     private String selectedTeam, selectedEvent, typeOfShoot;
@@ -115,9 +117,7 @@ public class AdminMatchDetailsFragment extends Fragment {
 
                 String matchIDstr = matchIntent.getExtras().getString("matchID");
 
-                int minute = 2;
-
-                //TODO: add code for minute calculation
+                int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
                 http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedEvent.toLowerCase(Locale.ROOT), minute);
 
@@ -126,6 +126,7 @@ public class AdminMatchDetailsFragment extends Fragment {
             }
         }
     }
+
 
     public void onClickFT(View view) {
         buttonIn.setVisibility(View.VISIBLE);
@@ -153,9 +154,7 @@ public class AdminMatchDetailsFragment extends Fragment {
 
             String matchIDstr = matchIntent.getExtras().getString("matchID");
 
-            int minute = 2;
-
-            //TODO: add code for minute calculation
+            int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
             http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
 
@@ -181,9 +180,7 @@ public class AdminMatchDetailsFragment extends Fragment {
 
             String matchIDstr = matchIntent.getExtras().getString("matchID");
 
-            int minute = 2;
-
-            //TODO: add code for minute calculation
+            int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
             http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
 
@@ -205,6 +202,12 @@ public class AdminMatchDetailsFragment extends Fragment {
         eventList = new EventList();
         selectedTeam = "HOME";
         team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
+
+        buttonH =  (Button) getActivity().findViewById(R.id.homeTeamBtn);
+        buttonH.setVisibility(View.VISIBLE);
+
+        buttonA = (Button) getActivity().findViewById(R.id.awayTeamBtn);
+        buttonA.setVisibility(View.VISIBLE);
 
         bp1 = (Button) getActivity().findViewById(R.id.player1);
         bp1.setVisibility(View.VISIBLE);
@@ -251,7 +254,6 @@ public class AdminMatchDetailsFragment extends Fragment {
                 eventList.getAllEvents());
         dropDown.setAdapter(arrayAdapter);
 
-        Button submitButton = (Button) getActivity().findViewById(R.id.submitButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -262,6 +264,93 @@ public class AdminMatchDetailsFragment extends Fragment {
                 }
             }
         });
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickUndo(view);
+            }
+        });
+        buttonIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    onClickIN(view);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        buttonOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    onClickOUT(view);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        buttonFT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickFT(view);
+            }
+        });
+        button2pt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClick2pt(view);
+            }
+        });
+        button3pt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClick3pt(view);
+            }
+        });
+        bp1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickBP1(view);
+            }
+        });
+        bp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickBP2(view);
+            }
+        });
+        bp3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickBP3(view);
+            }
+        });
+        bp4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickBP4(view);
+            }
+        });
+        bp5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickBP5(view);
+            }
+        });
+        buttonH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickHome(view);
+            }
+        });
+        buttonA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickAway(view);
+            }
+        });
+
     }
 
     @Override

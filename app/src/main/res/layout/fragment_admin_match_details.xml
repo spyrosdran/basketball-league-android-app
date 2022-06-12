@@ -122,39 +122,39 @@
             app:layout_constraintTop_toTopOf="@+id/submitButton" />
 
         <Button
-            android:textSize="8sp"
             android:id="@+id/buttonFT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orangeForeground"
             android:onClick="onClickFT"
             android:text="FreeThrow"
+            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="@+id/button2pt"
             app:layout_constraintEnd_toStartOf="@+id/button2pt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/button2pt" />
 
         <Button
-            android:textSize="8sp"
             android:id="@+id/button2pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orangeForeground"
             android:onClick="onClick2pt"
             android:text="2pointer"
+            android:textSize="8sp"
             app:layout_constraintBottom_toTopOf="@+id/submitButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/events" />
 
         <Button
-            android:textSize="8sp"
             android:id="@+id/button3pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orangeForeground"
             android:onClick="onClick3pt"
             android:text="3pointer"
+            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="@+id/button2pt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button2pt"
@@ -213,6 +213,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/events"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/minuteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MINUTE"
+            android:textColor="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="@+id/minuteNumberView"
+            app:layout_constraintStart_toStartOf="@+id/minuteNumberView"
+            app:layout_constraintTop_toBottomOf="@+id/minuteNumberView" />
+
+        <EditText
+            android:id="@+id/minuteNumberView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/submitButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/submitButton"
+            app:layout_constraintTop_toTopOf="@+id/submitButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
