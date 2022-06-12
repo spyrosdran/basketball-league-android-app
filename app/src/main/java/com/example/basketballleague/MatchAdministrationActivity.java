@@ -53,6 +53,22 @@ public class MatchAdministrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     okHttpHandlerAdmin.changeMatchStatus(intent.getStringExtra("status"), intent.getStringExtra("matchID"));
+
+                    String previousStatus = intent.getStringExtra("status");
+                    String newStatus = "";
+
+                    if(previousStatus.equals("upcoming")){
+                        newStatus = "live";
+                    }
+                    else if(previousStatus.equals("live")){
+                        newStatus = "ended";
+                    }
+
+                    intent.removeExtra("status");
+                    intent.putExtra("status", newStatus);
+
+                    finish();
+                    startActivity(intent);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -125,7 +125,7 @@ public class okHttpHandlerAdmin {
     public void changePlayer(String changeOut, String changeIn, String matchID) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-        Request request = new Request.Builder().url("http://" + IP + "/basketleague/changePlayers.php?changeOut=" + changeOut + "&changeIn=" + changeIn +"matchID=" + matchID).method("POST", body).build();
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/changePlayers.php?changeOut=" + changeOut + "&changeIn=" + changeIn +"&matchID=" + matchID).method("POST", body).build();
         Response response = client.newCall(request).execute();
     }
 

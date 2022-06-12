@@ -17,7 +17,7 @@
 		$status = "ended";
 	}
 	
-	$sql = "UPDATE `match` SET `status` = " . $status . " WHERE `matchID` = " . $matchID . ";";
+	$sql = "UPDATE `match` SET `status` = '" . $status . "' WHERE `matchID` = " . $matchID . ";";
 	mysqli_query($dbh, $sql);
 	
 	mysqli_close($dbh);
