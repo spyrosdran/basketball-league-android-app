@@ -18,8 +18,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.basketballleague.R;
+import com.example.basketballleague.okHttpHandlerAdmin;
+import com.google.android.material.button.MaterialButton;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class AdminMatchDetailsFragment extends Fragment {
 
@@ -92,20 +96,30 @@ public class AdminMatchDetailsFragment extends Fragment {
         submitButton.setVisibility(View.VISIBLE);
     }
 
-    public void onClickSubmit(View view) {
+    public void onClickSubmit(View view) throws IOException {
         Spinner dropDown  = (Spinner) getActivity().findViewById(R.id.events);
         selectedEvent = String.valueOf(dropDown.getSelectedItem());
-        if (selectedEvent == "SHOOT"){
+        if (selectedEvent.equals("SHOOT")){
             buttonFT.setVisibility(View.VISIBLE);
             button2pt.setVisibility(View.VISIBLE);
             button3pt.setVisibility(View.VISIBLE);
             submitButton.setVisibility(View.INVISIBLE);
             Toast.makeText(getActivity(), "Choose the type of shoot and then press IN or OUT.", Toast.LENGTH_SHORT).show();
         }else {
-            if (selectedPlayer.getPlayerName() == ""){
+            if (selectedPlayer.getPlayerName().equals("")){
                 Toast.makeText(getActivity(), "Please select a player before submitting an event!", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + selectedEvent, Toast.LENGTH_SHORT).show();
+
+                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+                String matchIDstr = matchIntent.getExtras().getString("matchID");
+
+                int minute = 2;
+
+                //TODO: add code for minute calculation
+
+                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedEvent.toLowerCase(Locale.ROOT), minute);
 
                 selectedEvent = " ";
                 selectedPlayer = new PlayerInCourt();
@@ -116,7 +130,7 @@ public class AdminMatchDetailsFragment extends Fragment {
     public void onClickFT(View view) {
         buttonIn.setVisibility(View.VISIBLE);
         buttonOut.setVisibility(View.VISIBLE);
-        typeOfShoot = "FT";
+        typeOfShoot = "1pt";
     }
     public void onClick2pt(View view) {
         buttonIn.setVisibility(View.VISIBLE);
@@ -129,11 +143,21 @@ public class AdminMatchDetailsFragment extends Fragment {
         typeOfShoot = "3pt";
     }
 
-    public void onClickIN(View view) {
+    public void onClickIN(View view) throws IOException {
         if (selectedPlayer.getPlayerName() == ""){
             Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
+
+            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+            String matchIDstr = matchIntent.getExtras().getString("matchID");
+
+            int minute = 2;
+
+            //TODO: add code for minute calculation
+
+            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
 
             selectedEvent = " ";
             selectedPlayer = new PlayerInCourt();
@@ -147,11 +171,21 @@ public class AdminMatchDetailsFragment extends Fragment {
         }
     }
 
-    public void onClickOUT(View view) {
+    public void onClickOUT(View view) throws IOException {
         if (selectedPlayer.getPlayerName() == ""){
             Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
+
+            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+            String matchIDstr = matchIntent.getExtras().getString("matchID");
+
+            int minute = 2;
+
+            //TODO: add code for minute calculation
+
+            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
 
             selectedEvent = " ";
             selectedPlayer = new PlayerInCourt();
@@ -216,6 +250,18 @@ public class AdminMatchDetailsFragment extends Fragment {
                 android.R.layout.simple_spinner_dropdown_item,
                 eventList.getAllEvents());
         dropDown.setAdapter(arrayAdapter);
+
+        Button submitButton = (Button) getActivity().findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    onClickSubmit(view);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
