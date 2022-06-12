@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -49,11 +50,11 @@ public class AdminLineUpFragment extends Fragment {
         TextView arrowIn = (TextView) getActivity().findViewById(R.id.arrow_in);
         Button submitButton = (Button) getActivity().findViewById(R.id.submit_button);
 
-        playerToGoOut.setVisibility(View.INVISIBLE);
-        arrowOut.setVisibility(View.INVISIBLE);
-        playerToGoIn.setVisibility(View.INVISIBLE);
-        arrowIn.setVisibility(View.INVISIBLE);
-        //submitButton.setVisibility(View.INVISIBLE);
+        playerToGoOut.setVisibility(View.GONE);
+        arrowOut.setVisibility(View.GONE);
+        playerToGoIn.setVisibility(View.GONE);
+        arrowIn.setVisibility(View.GONE);
+        submitButton.setVisibility(View.GONE);
 
         RadioButton playerIn1 = (RadioButton) getActivity().findViewById(R.id.player_in_1);
         RadioButton playerIn2 = (RadioButton) getActivity().findViewById(R.id.player_in_2);
@@ -103,10 +104,11 @@ public class AdminLineUpFragment extends Fragment {
                 playerOut4.setChecked(false);
                 playerOut5.setChecked(false);
 
-                playerToGoOut.setVisibility(View.INVISIBLE);
-                arrowOut.setVisibility(View.INVISIBLE);
-                playerToGoIn.setVisibility(View.INVISIBLE);
-                arrowIn.setVisibility(View.INVISIBLE);
+                playerToGoOut.setVisibility(View.GONE);
+                arrowOut.setVisibility(View.GONE);
+                playerToGoIn.setVisibility(View.GONE);
+                arrowIn.setVisibility(View.GONE);
+                submitButton.setVisibility(View.GONE);
 
                 playerIn1.setVisibility(View.INVISIBLE);
                 playerIn2.setVisibility(View.INVISIBLE);
@@ -132,10 +134,11 @@ public class AdminLineUpFragment extends Fragment {
                 playerOut4.setChecked(false);
                 playerOut5.setChecked(false);
 
-                playerToGoOut.setVisibility(View.INVISIBLE);
-                arrowOut.setVisibility(View.INVISIBLE);
-                playerToGoIn.setVisibility(View.INVISIBLE);
-                arrowIn.setVisibility(View.INVISIBLE);
+                playerToGoOut.setVisibility(View.GONE);
+                arrowOut.setVisibility(View.GONE);
+                playerToGoIn.setVisibility(View.GONE);
+                arrowIn.setVisibility(View.GONE);
+                submitButton.setVisibility(View.GONE);
 
                 playerIn1.setVisibility(View.INVISIBLE);
                 playerIn2.setVisibility(View.INVISIBLE);
@@ -145,151 +148,194 @@ public class AdminLineUpFragment extends Fragment {
             }
         });
 
-        //Setting Up the onClickListener of the Players Radio Buttons
-        RadioGroup changeOutRadioGroup = (RadioGroup) getActivity().findViewById(R.id.change_out_radio_group);
-        changeOutRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton radioButton = (RadioButton) getActivity().findViewById(i);
-                String player = radioButton.getText().toString();
-                playerToGoOut.setText(player);
-                playerToGoOut.setVisibility(View.VISIBLE);
-                arrowOut.setVisibility(View.VISIBLE);
+        if((intent.getStringExtra("status")).equals("live")) {
+            //Setting Up the onClickListener of the Players Radio Buttons
+            RadioGroup changeOutRadioGroup = (RadioGroup) getActivity().findViewById(R.id.change_out_radio_group);
+            changeOutRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                    RadioButton radioButton = (RadioButton) getActivity().findViewById(i);
+                    String player = radioButton.getText().toString();
+                    playerToGoOut.setText(player);
+                    playerToGoOut.setVisibility(View.VISIBLE);
+                    arrowOut.setVisibility(View.VISIBLE);
 
-                playerIn1.setVisibility(View.INVISIBLE);
-                playerIn2.setVisibility(View.INVISIBLE);
-                playerIn3.setVisibility(View.INVISIBLE);
-                playerIn4.setVisibility(View.INVISIBLE);
-                playerIn5.setVisibility(View.INVISIBLE);
+                    playerIn1.setVisibility(View.INVISIBLE);
+                    playerIn2.setVisibility(View.INVISIBLE);
+                    playerIn3.setVisibility(View.INVISIBLE);
+                    playerIn4.setVisibility(View.INVISIBLE);
+                    playerIn5.setVisibility(View.INVISIBLE);
 
-                availablePlayers = new ArrayList<>();
-                //Getting the Available Players to change
-                okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
-                try {
-                    availablePlayers = okHttpHandlerAdmin.getChangeablePlayers(player);
-                    Log.d("My App","Successful http request in Changeable Players");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                if(availablePlayers.size() >=0 && availablePlayers.size() <=5) {
-                    switch (availablePlayers.size()){
-                        case 1: {
-                            playerIn1.setText(availablePlayers.get(0));
-                            playerIn1.setVisibility(View.VISIBLE);
-                            break;
-                        }
-                        case 2: {
-                            playerIn1.setText(availablePlayers.get(0));
-                            playerIn1.setVisibility(View.VISIBLE);
-                            playerIn2.setText(availablePlayers.get(1));
-                            playerIn2.setVisibility(View.VISIBLE);
-                            break;
-                        }
-                        case 3: {
-                            playerIn1.setText(availablePlayers.get(0));
-                            playerIn1.setVisibility(View.VISIBLE);
-                            playerIn2.setText(availablePlayers.get(1));
-                            playerIn2.setVisibility(View.VISIBLE);
-                            playerIn3.setText(availablePlayers.get(2));
-                            playerIn3.setVisibility(View.VISIBLE);
-                            break;
-                        }
-                        case 4: {
-                            playerIn1.setText(availablePlayers.get(0));
-                            playerIn1.setVisibility(View.VISIBLE);
-                            playerIn2.setText(availablePlayers.get(1));
-                            playerIn2.setVisibility(View.VISIBLE);
-                            playerIn3.setText(availablePlayers.get(2));
-                            playerIn3.setVisibility(View.VISIBLE);
-                            playerIn4.setText(availablePlayers.get(3));
-                            playerIn4.setVisibility(View.VISIBLE);
-                            break;
-                        }
-                        case 5: {
-                            playerIn1.setText(availablePlayers.get(0));
-                            playerIn1.setVisibility(View.VISIBLE);
-                            playerIn2.setText(availablePlayers.get(1));
-                            playerIn2.setVisibility(View.VISIBLE);
-                            playerIn3.setText(availablePlayers.get(2));
-                            playerIn3.setVisibility(View.VISIBLE);
-                            playerIn4.setText(availablePlayers.get(3));
-                            playerIn4.setVisibility(View.VISIBLE);
-                            playerIn5.setText(availablePlayers.get(4));
-                            playerIn5.setVisibility(View.VISIBLE);
-                            break;
-                        }
-                        default: break;
-                    }
-                }
-
-
-            }
-        });
-
-        RadioGroup changeInRadioGroup = (RadioGroup) getActivity().findViewById(R.id.change_in_radio_group);
-        changeInRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton radioButton = (RadioButton) getActivity().findViewById(i);
-                String player = radioButton.getText().toString();
-                playerToGoIn.setText(player);
-                playerToGoIn.setVisibility(View.VISIBLE);
-                arrowIn.setVisibility(View.VISIBLE);
-            }
-        });
-
-        //Setting up the Submit Button
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(playerToGoIn.getVisibility() == View.VISIBLE && playerToGoOut.getVisibility() == View.VISIBLE){
-                    submitButton.setVisibility(View.VISIBLE);
-                    String playerGetsOut = playerToGoOut.getText().toString();
-                    String playerGetsIn = playerToGoIn.getText().toString();
-
+                    availablePlayers = new ArrayList<>();
+                    //Getting the Available Players to change
                     okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
                     try {
-                        okHttpHandlerAdmin.changePlayer(playerGetsOut, playerGetsIn, intent.getStringExtra("matchID"));
-
-                        int changeInRadioID = changeInRadioGroup.getCheckedRadioButtonId();
-                        RadioButton changeInRadio = (RadioButton) getActivity().findViewById(changeInRadioID);
-
-                        int changeOutRadioID = changeOutRadioGroup.getCheckedRadioButtonId();
-                        RadioButton changeOutRadio = (RadioButton) getActivity().findViewById(changeOutRadioID);
-                        changeOutRadio.setText(changeInRadio.getText().toString());
-
-                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Succesfully Changed", Toast.LENGTH_SHORT);
-                        toast.show();
+                        availablePlayers = okHttpHandlerAdmin.getChangeablePlayers(player);
+                        Log.d("My App", "Successful http request in Changeable Players");
                     } catch (IOException e) {
                         e.printStackTrace();
-                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error while performing action", Toast.LENGTH_SHORT);
-                        toast.show();
                     }
-                    finally {
 
-                        int checkedRadioID = changeInRadioGroup.getCheckedRadioButtonId();
-                        RadioButton checkedRadio = (RadioButton) getActivity().findViewById(checkedRadioID);
-                        checkedRadio.setChecked(false);
+                    if (availablePlayers.size() >= 0 && availablePlayers.size() <= 5) {
+                        switch (availablePlayers.size()) {
+                            case 1: {
+                                playerIn1.setText(availablePlayers.get(0));
+                                playerIn1.setVisibility(View.VISIBLE);
+                                break;
+                            }
+                            case 2: {
+                                playerIn1.setText(availablePlayers.get(0));
+                                playerIn1.setVisibility(View.VISIBLE);
+                                playerIn2.setText(availablePlayers.get(1));
+                                playerIn2.setVisibility(View.VISIBLE);
+                                break;
+                            }
+                            case 3: {
+                                playerIn1.setText(availablePlayers.get(0));
+                                playerIn1.setVisibility(View.VISIBLE);
+                                playerIn2.setText(availablePlayers.get(1));
+                                playerIn2.setVisibility(View.VISIBLE);
+                                playerIn3.setText(availablePlayers.get(2));
+                                playerIn3.setVisibility(View.VISIBLE);
+                                break;
+                            }
+                            case 4: {
+                                playerIn1.setText(availablePlayers.get(0));
+                                playerIn1.setVisibility(View.VISIBLE);
+                                playerIn2.setText(availablePlayers.get(1));
+                                playerIn2.setVisibility(View.VISIBLE);
+                                playerIn3.setText(availablePlayers.get(2));
+                                playerIn3.setVisibility(View.VISIBLE);
+                                playerIn4.setText(availablePlayers.get(3));
+                                playerIn4.setVisibility(View.VISIBLE);
+                                break;
+                            }
+                            case 5: {
+                                playerIn1.setText(availablePlayers.get(0));
+                                playerIn1.setVisibility(View.VISIBLE);
+                                playerIn2.setText(availablePlayers.get(1));
+                                playerIn2.setVisibility(View.VISIBLE);
+                                playerIn3.setText(availablePlayers.get(2));
+                                playerIn3.setVisibility(View.VISIBLE);
+                                playerIn4.setText(availablePlayers.get(3));
+                                playerIn4.setVisibility(View.VISIBLE);
+                                playerIn5.setText(availablePlayers.get(4));
+                                playerIn5.setVisibility(View.VISIBLE);
+                                break;
+                            }
+                            default:
+                                break;
+                        }
+                    }
 
-                        int changeOutRadioID = changeOutRadioGroup.getCheckedRadioButtonId();
-                        RadioButton changeOutRadio = (RadioButton) getActivity().findViewById(changeOutRadioID);
-                        changeOutRadio.setChecked(false);
 
-                        playerToGoOut.setVisibility(View.INVISIBLE);
-                        arrowOut.setVisibility(View.INVISIBLE);
-                        playerToGoIn.setVisibility(View.INVISIBLE);
-                        arrowIn.setVisibility(View.INVISIBLE);
+                }
+            });
 
-                        playerIn1.setVisibility(View.INVISIBLE);
-                        playerIn2.setVisibility(View.INVISIBLE);
-                        playerIn3.setVisibility(View.INVISIBLE);
-                        playerIn4.setVisibility(View.INVISIBLE);
-                        playerIn5.setVisibility(View.INVISIBLE);
+            RadioGroup changeInRadioGroup = (RadioGroup) getActivity().findViewById(R.id.change_in_radio_group);
+            changeInRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                    RadioButton radioButton = (RadioButton) getActivity().findViewById(i);
+                    String player = radioButton.getText().toString();
+                    playerToGoIn.setText(player);
+                    playerToGoIn.setVisibility(View.VISIBLE);
+                    arrowIn.setVisibility(View.VISIBLE);
+                    submitButton.setVisibility(View.VISIBLE);
+                }
+            });
+
+            //Setting up the Submit Button
+            submitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (playerToGoIn.getVisibility() == View.VISIBLE && playerToGoOut.getVisibility() == View.VISIBLE) {
+
+                        RadioGroup changeOutRadioGroup = (RadioGroup) getActivity().findViewById(R.id.change_out_radio_group);
+                        int checkedOut = changeOutRadioGroup.getCheckedRadioButtonId();
+                        RadioButton out = getActivity().findViewById(checkedOut);
+
+                        RadioGroup changeInRadioGroup = (RadioGroup) getActivity().findViewById(R.id.change_in_radio_group);
+                        int checkedIn = changeOutRadioGroup.getCheckedRadioButtonId();
+                        RadioButton in = getActivity().findViewById(checkedOut);
+
+                        String playerGetsOut = out.getText().toString();
+                        String playerGetsIn = in.getText().toString();
+
+                        okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
+                        try {
+                            okHttpHandlerAdmin.changePlayer(playerGetsOut, playerGetsIn, intent.getStringExtra("matchID"));
+
+                            int changeInRadioID = changeInRadioGroup.getCheckedRadioButtonId();
+                            RadioButton changeInRadio = (RadioButton) getActivity().findViewById(changeInRadioID);
+
+                            int changeOutRadioID = changeOutRadioGroup.getCheckedRadioButtonId();
+                            RadioButton changeOutRadio = (RadioButton) getActivity().findViewById(changeOutRadioID);
+                            changeOutRadio.setText(changeInRadio.getText().toString());
+
+                            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Succesfully Changed", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error while performing action", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } finally {
+
+                            int checkedRadioID = changeInRadioGroup.getCheckedRadioButtonId();
+                            RadioButton checkedRadio = (RadioButton) getActivity().findViewById(checkedRadioID);
+                            checkedRadio.setChecked(false);
+
+                            int changeOutRadioID = changeOutRadioGroup.getCheckedRadioButtonId();
+                            RadioButton changeOutRadio = (RadioButton) getActivity().findViewById(changeOutRadioID);
+                            changeOutRadio.setChecked(false);
+
+                            playerToGoOut.setVisibility(View.GONE);
+                            arrowOut.setVisibility(View.GONE);
+                            playerToGoIn.setVisibility(View.GONE);
+                            arrowIn.setVisibility(View.GONE);
+                            submitButton.setVisibility(View.GONE);
+
+                            playerIn1.setVisibility(View.INVISIBLE);
+                            playerIn2.setVisibility(View.INVISIBLE);
+                            playerIn3.setVisibility(View.INVISIBLE);
+                            playerIn4.setVisibility(View.INVISIBLE);
+                            playerIn5.setVisibility(View.INVISIBLE);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+        else {
+            playerIn1.setText(awayTeam.get(0));
+            playerIn2.setText(awayTeam.get(1));
+            playerIn3.setText(awayTeam.get(2));
+            playerIn4.setText(awayTeam.get(3));
+            playerIn5.setText(awayTeam.get(4));
+
+            playerIn1.setVisibility(View.VISIBLE);
+            playerIn2.setVisibility(View.VISIBLE);
+            playerIn3.setVisibility(View.VISIBLE);
+            playerIn4.setVisibility(View.VISIBLE);
+            playerIn5.setVisibility(View.VISIBLE);
+
+            playerIn1.setClickable(false);
+            playerIn2.setClickable(false);
+            playerIn3.setClickable(false);
+            playerIn4.setClickable(false);
+            playerIn5.setClickable(false);
+
+            playerOut1.setClickable(false);
+            playerOut2.setClickable(false);
+            playerOut3.setClickable(false);
+            playerOut4.setClickable(false);
+            playerOut5.setClickable(false);
+
+            home_team_radio_button.setClickable(false);
+            away_team_radio_button.setClickable(false);
+
+            home_team_radio_button.setChecked(false);
+
+        }
     }
 
 

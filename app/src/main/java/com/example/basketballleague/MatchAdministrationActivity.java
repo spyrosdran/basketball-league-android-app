@@ -39,6 +39,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_admin);
 
+        okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
         Intent intent = getIntent();
         String score = intent.getStringExtra("homeScore") + " - " + intent.getStringExtra("awayScore");
         ImageView homePhoto = findViewById(R.id.homePhoto);
@@ -46,6 +47,19 @@ public class MatchAdministrationActivity extends AppCompatActivity {
         TextView scoreView = findViewById(R.id.score);
         scoreView.setText(score);
         Button startButton = findViewById(R.id.start_button);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    okHttpHandlerAdmin.changeMatchStatus(intent.getStringExtra("status"), intent.getStringExtra("matchID"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         if((intent.getStringExtra("status")).equals("ended")){
             startButton.setVisibility(View.GONE);
         }
@@ -69,7 +83,6 @@ public class MatchAdministrationActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
         String matchID = intent.getStringExtra("matchID");
         ArrayList<String> allPlayers = new ArrayList<>();
 
