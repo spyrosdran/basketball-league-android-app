@@ -145,7 +145,7 @@
             app:layout_constraintBottom_toTopOf="@+id/submitButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/events" />
+            app:layout_constraintTop_toBottomOf="@+id/eventLabel" />
 
         <Button
             android:id="@+id/button3pt"
@@ -239,6 +239,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/submitButton"
             app:layout_constraintTop_toTopOf="@+id/submitButton" />
+
+        <Spinner
+            android:id="@+id/mistakeType"
+            android:textSize="8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="48sp"
+            android:backgroundTint="@color/orangeForeground"
+            app:layout_constraintBottom_toBottomOf="@+id/events"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/events"
+            app:layout_constraintTop_toTopOf="@+id/events" />
+
+        <TextView
+            android:id="@+id/eventLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EVENT"
+            android:textColor="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="@+id/events"
+            app:layout_constraintStart_toStartOf="@+id/events"
+            app:layout_constraintTop_toBottomOf="@+id/events" />
+
+        <TextView
+            android:id="@+id/mistakeTypeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(MISTAKE)"
+            android:textColor="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="@+id/mistakeType"
+            app:layout_constraintStart_toStartOf="@+id/mistakeType"
+            app:layout_constraintTop_toBottomOf="@+id/mistakeType" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

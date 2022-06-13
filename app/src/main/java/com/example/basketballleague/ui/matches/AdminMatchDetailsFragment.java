@@ -31,6 +31,7 @@ public class AdminMatchDetailsFragment extends Fragment {
     private AdminMatchDetailsViewModel mViewModel;
 
     private EventList eventList;
+    private MistakeList mistakeList;
     private TeamMembers team;
     private Button buttonH,buttonA;
     private Button bp1, bp2, bp3, bp4, bp5;
@@ -38,6 +39,7 @@ public class AdminMatchDetailsFragment extends Fragment {
     private String selectedTeam, selectedEvent, typeOfShoot;
     private List<PlayerInCourt> playerList;
     private PlayerInCourt selectedPlayer;
+    private Spinner eventDropDown,mistakeDropDown;
     private Intent matchIntent;
 
     public static AdminMatchDetailsFragment newInstance(Intent intent) {
@@ -48,9 +50,11 @@ public class AdminMatchDetailsFragment extends Fragment {
         matchIntent = intent;
     }
 
-    public void onClickHome(View view) {
+    public void onClickHome(View view) {        //resetting team players according to HOME team
         selectedTeam = "HOME";
          team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
+
+        //connecting players to player buttons
         playerList = team.getAllPlayers();
         if (playerList.size() == 5){
             bp1.setText(playerList.get(0).getPlayerName());
@@ -63,10 +67,11 @@ public class AdminMatchDetailsFragment extends Fragment {
         }
     }
 
-    public void onClickAway(View view) {
+    public void onClickAway(View view) {        //resetting team players according to HOME team
         selectedTeam = "AWAY";
         team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
 
+        //connecting players to player buttons
         playerList = team.getAllPlayers();
         if (playerList.size() == 5){
             bp1.setText(playerList.get(0).getPlayerName());
@@ -80,14 +85,14 @@ public class AdminMatchDetailsFragment extends Fragment {
     }
 
 
-
+    //selecting player according to the button pressed
     public void onClickBP1(View view) {selectedPlayer = playerList.get(0);}
     public void onClickBP2(View view) {selectedPlayer = playerList.get(1);}
     public void onClickBP3(View view) {selectedPlayer = playerList.get(2);}
     public void onClickBP4(View view) {selectedPlayer = playerList.get(3);}
     public void onClickBP5(View view) {selectedPlayer = playerList.get(4);}
 
-    public void onClickUndo(View view) {
+    public void onClickUndo(View view) {    //reinitializing submit form if UNDO is pressed
         selectedPlayer = new PlayerInCourt();
         selectedEvent = " ";
         buttonFT.setVisibility(View.INVISIBLE);
@@ -98,41 +103,60 @@ public class AdminMatchDetailsFragment extends Fragment {
         submitButton.setVisibility(View.VISIBLE);
     }
 
-    public void onClickSubmit(View view) throws IOException {
-        Spinner dropDown  = (Spinner) getActivity().findViewById(R.id.events);
-        selectedEvent = String.valueOf(dropDown.getSelectedItem());
-        if (selectedEvent.equals("SHOOT")){
-            buttonFT.setVisibility(View.VISIBLE);
-            button2pt.setVisibility(View.VISIBLE);
-            button3pt.setVisibility(View.VISIBLE);
-            submitButton.setVisibility(View.INVISIBLE);
-            Toast.makeText(getActivity(), "Choose the type of shoot and then press IN or OUT.", Toast.LENGTH_SHORT).show();
+    public void onClickSubmit(View view) throws IOException {   //submitting event or revealing the submit buttons for SHOOT submission
+        if (selectedPlayer.getPlayerName().equals("")){         //checking if a player is selected
+            Toast.makeText(getActivity(), "Please select a player before submitting an event!", Toast.LENGTH_SHORT).show();
         }else {
-            if (selectedPlayer.getPlayerName().equals("")){
-                Toast.makeText(getActivity(), "Please select a player before submitting an event!", Toast.LENGTH_SHORT).show();
-            }else {
+            int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
-                int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
+            if(minute > 0 && minute <= 40){                     //checking if minute has been inputted correctly
+                eventDropDown = (Spinner) getActivity().findViewById(R.id.events);
+                selectedEvent = String.valueOf(eventDropDown.getSelectedItem());    //get event
+                if (selectedEvent.equals("SHOOT")) {            //reveal the right buttons if SHOOT is selected
+                    buttonFT.setVisibility(View.VISIBLE);
+                    button2pt.setVisibility(View.VISIBLE);
+                    button3pt.setVisibility(View.VISIBLE);
+                    submitButton.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getActivity(), "Choose the type of shoot and then press IN or OUT.", Toast.LENGTH_SHORT).show();
+                }else if (selectedEvent.equals("MISTAKE")) {
+                    String selectedMistake = String.valueOf(mistakeDropDown.getSelectedItem()); //get mistake type
+                    if (selectedMistake.equals("-")){           //checking if a mistake type was selected
+                        Toast.makeText(getActivity(), "Please select the type of mistake before submitting it!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + selectedMistake + " (" + selectedEvent + ")", Toast.LENGTH_SHORT).show();
 
-                if(minute > 0 && minute <= 40){
+                        okHttpHandlerAdmin http = new okHttpHandlerAdmin();
+
+                        //submitting event to database
+                        String matchIDstr = matchIntent.getExtras().getString("matchID");
+                        http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedMistake.toLowerCase(Locale.ROOT) + " (" + selectedEvent.toLowerCase(Locale.ROOT) + ")", minute);
+
+                        //reinitializing the event submit form
+                        selectedEvent = " ";
+                        selectedPlayer = new PlayerInCourt();
+                    }
+
+                }else {     //submit any other event
                     Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + selectedEvent, Toast.LENGTH_SHORT).show();
 
                     okHttpHandlerAdmin http = new okHttpHandlerAdmin();
 
+                    //submitting event to database
                     String matchIDstr = matchIntent.getExtras().getString("matchID");
                     http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), selectedEvent.toLowerCase(Locale.ROOT), minute);
-                }
-                else{
-                    Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
-                }
 
-                selectedEvent = " ";
-                selectedPlayer = new PlayerInCourt();
+                    //reinitializing the event submit form
+                    selectedEvent = " ";
+                    selectedPlayer = new PlayerInCourt();
+
+                }
+            }else {     //error message if not right minute input has been given
+                Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-
+    //selecting type of SHOOT according to the button pressed and revealing outcome buttons IN/OUT
     public void onClickFT(View view) {
         buttonIn.setVisibility(View.VISIBLE);
         buttonOut.setVisibility(View.VISIBLE);
@@ -149,83 +173,89 @@ public class AdminMatchDetailsFragment extends Fragment {
         typeOfShoot = "3pt";
     }
 
+    //submitting successful SHOOT
     public void onClickIN(View view) throws IOException {
-        if (selectedPlayer.getPlayerName() == ""){
-            Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
-        }else {
+        int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
-            int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
+        if(minute > 0 && minute <= 40){ //rechecking time input
+            Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
 
-            if(minute > 0 && minute <= 40){
-                Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, IN", Toast.LENGTH_SHORT).show();
+            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
 
-                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
-
-                String matchIDstr = matchIntent.getExtras().getString("matchID");
-                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
-            }
-            else{
-                Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
-            }
-
-            selectedEvent = " ";
-            selectedPlayer = new PlayerInCourt();
-            buttonFT.setVisibility(View.INVISIBLE);
-            button2pt.setVisibility(View.INVISIBLE);
-            button3pt.setVisibility(View.INVISIBLE);
-            buttonIn.setVisibility(View.INVISIBLE);
-            buttonOut.setVisibility(View.INVISIBLE);
-            submitButton.setVisibility(View.VISIBLE);
-            undoButton.setVisibility(View.VISIBLE);
+            //submitting successful SHOOT to database
+            String matchIDstr = matchIntent.getExtras().getString("matchID");
+            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
         }
+        else{     //error message if not right minute input has been given
+            Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
+        }
+
+        //reinitializing the event submit form
+        selectedEvent = " ";
+        selectedPlayer = new PlayerInCourt();
+        buttonFT.setVisibility(View.INVISIBLE);
+        button2pt.setVisibility(View.INVISIBLE);
+        button3pt.setVisibility(View.INVISIBLE);
+        buttonIn.setVisibility(View.INVISIBLE);
+        buttonOut.setVisibility(View.INVISIBLE);
+        submitButton.setVisibility(View.VISIBLE);
+        undoButton.setVisibility(View.VISIBLE);
     }
 
+    //submitting unsuccessful SHOOT
     public void onClickOUT(View view) throws IOException {
-        if (selectedPlayer.getPlayerName() == ""){
-            Toast.makeText(getActivity(), "Please select a player before submitting the shoot!", Toast.LENGTH_SHORT).show();
-        }else {
+        int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
 
-            int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minuteNumberView)).getText().toString());
+        if(minute > 0 && minute <= 40){ //rechecking time input
+            Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
 
-            if(minute > 0 && minute <= 40){
-                Toast.makeText(getActivity(), selectedPlayer.getPlayerName() + ", " + typeOfShoot + " shoot, OUT", Toast.LENGTH_SHORT).show();
+            okHttpHandlerAdmin http = new okHttpHandlerAdmin();
 
-                okHttpHandlerAdmin http = new okHttpHandlerAdmin();
-
-                String matchIDstr = matchIntent.getExtras().getString("matchID");
-                http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
-            }
-            else{
-                Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
-            }
-
-
-
-            selectedEvent = " ";
-            selectedPlayer = new PlayerInCourt();
-            buttonFT.setVisibility(View.INVISIBLE);
-            button2pt.setVisibility(View.INVISIBLE);
-            button3pt.setVisibility(View.INVISIBLE);
-            buttonIn.setVisibility(View.INVISIBLE);
-            buttonOut.setVisibility(View.INVISIBLE);
-            submitButton.setVisibility(View.VISIBLE);
-            undoButton.setVisibility(View.VISIBLE);
+            //submitting unsuccessful SHOOT to database
+            String matchIDstr = matchIntent.getExtras().getString("matchID");
+            http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot + " missed", minute);
         }
+        else{     //error message if not right minute input has been given
+            Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();
+        }
+
+        //reinitializing the event submit form
+        selectedEvent = " ";
+        selectedPlayer = new PlayerInCourt();
+        buttonFT.setVisibility(View.INVISIBLE);
+        button2pt.setVisibility(View.INVISIBLE);
+        button3pt.setVisibility(View.INVISIBLE);
+        buttonIn.setVisibility(View.INVISIBLE);
+        buttonOut.setVisibility(View.INVISIBLE);
+        submitButton.setVisibility(View.VISIBLE);
+        undoButton.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void onStart() {
+    public void onStart() {     //initializing form
         super.onStart();
+
+        //get hardcoded event and mistake types
         eventList = new EventList();
+        mistakeList = new MistakeList();
+
+        //initialize using the HOME team
         selectedTeam = "HOME";
         team = new TeamMembers(matchIntent.getStringExtra("matchID"),selectedTeam);
 
+        //initialize selected player and event
+        selectedPlayer = new PlayerInCourt();
+        selectedEvent = " ";
+
+        //connect HOME and AWAY buttons
+        //set visibility of HOME and AWAY buttons for the basic submit form
         buttonH =  (Button) getActivity().findViewById(R.id.homeTeamBtn);
         buttonH.setVisibility(View.VISIBLE);
-
         buttonA = (Button) getActivity().findViewById(R.id.awayTeamBtn);
         buttonA.setVisibility(View.VISIBLE);
 
+        //connect player buttons
+        //set visibility of player buttons for the basic submit form
         bp1 = (Button) getActivity().findViewById(R.id.player1);
         bp1.setVisibility(View.VISIBLE);
         bp2 = (Button) getActivity().findViewById(R.id.player2);
@@ -237,23 +267,30 @@ public class AdminMatchDetailsFragment extends Fragment {
         bp5 = (Button) getActivity().findViewById(R.id.player5);
         bp5.setVisibility(View.VISIBLE);
 
-        selectedPlayer = new PlayerInCourt();
-        selectedEvent = " ";
+        //connect SHOOT buttons
+        //set visibility of SHOOT buttons for the basic submit form
         buttonFT = (Button) getActivity().findViewById(R.id.buttonFT);
         buttonFT.setVisibility(View.INVISIBLE);
         button2pt = (Button) getActivity().findViewById(R.id.button2pt);
         button2pt.setVisibility(View.INVISIBLE);
         button3pt = (Button) getActivity().findViewById(R.id.button3pt);
         button3pt.setVisibility(View.INVISIBLE);
+
+        //connect submission buttons
+        //set visibility of submission buttons for the basic submit form
         buttonIn = (Button) getActivity().findViewById(R.id.buttonIN);
         buttonIn.setVisibility(View.INVISIBLE);
         buttonOut = (Button) getActivity().findViewById(R.id.buttonOUT);
         buttonOut.setVisibility(View.INVISIBLE);
         submitButton = (Button) getActivity().findViewById(R.id.submitButton);
         submitButton.setVisibility(View.VISIBLE);
+
+        //connect UNDO button
+        //set visibility of UNDO buttons for the basic submit form
         undoButton = (Button) getActivity().findViewById(R.id.undoButton);
         undoButton.setVisibility(View.VISIBLE);
 
+        //connecting players to player buttons
         playerList = team.getAllPlayers();
         if (playerList.size() == 5){
             bp1.setText(playerList.get(0).getPlayerName());
@@ -265,12 +302,21 @@ public class AdminMatchDetailsFragment extends Fragment {
             Toast.makeText(getActivity(), "ERROR!!! Not appropriate players in the court!", Toast.LENGTH_SHORT).show();
         }
 
-        Spinner dropDown = (Spinner) getActivity().findViewById(R.id.events);
+        //initializing Spinners according to event and mistake types
+        eventDropDown = (Spinner) getActivity().findViewById(R.id.events);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_dropdown_item,
                 eventList.getAllEvents());
-        dropDown.setAdapter(arrayAdapter);
+        eventDropDown.setAdapter(arrayAdapter);
 
+        mistakeDropDown = (Spinner) getActivity().findViewById(R.id.mistakeType);
+        ArrayAdapter<String> mistakeArrayAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item,
+                mistakeList.getAllMistakes());
+        mistakeDropDown.setAdapter(mistakeArrayAdapter);
+
+
+        //SETTING onClick LISTENERS AND CONNECTING EACH BUTTON TO ITS ON CLICK METHOD
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
