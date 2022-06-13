@@ -164,7 +164,7 @@ public class okHttpHandlerAdmin {
     public void submitEvent(int matchID, int playerID, String type, int minute) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-        Request request = new Request.Builder().url("http://" + IP + "/basketleague/submitEvent.php?matchid=" + matchID + "&playerid=" + playerID + "&type=\"" + type + "\"" + "&minute=" + minute).method("POST", body).build();
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/addMatchEvent.php?matchid=" + matchID + "&playerid=" + playerID + "&type=\"" + type + "\"" + "&minute=" + minute).method("POST", body).build();
         Response response = client.newCall(request).execute();
     }
 
