@@ -2,12 +2,15 @@ package com.example.basketballleague;
 
 import android.os.StrictMode;
 
+import com.example.basketballleague.ui.matches.Comment;
 import com.example.basketballleague.ui.matches.PlayerInCourt;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -198,6 +201,84 @@ public class okHttpHandlerAdmin {
         }
 
         return players;
+    }
+
+    public void addComment(int matchID, String content) throws  IOException{
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/newComment.php?matchID=" + matchID + "&content=\"" + content + "\"").method("POST", body).build();
+        Response response = client.newCall(request).execute();
+    }
+
+
+    public ArrayList<Comment> loadComments(int matchID) throws IOException{
+        ArrayList<Comment> comments = new ArrayList<Comment>();
+
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/loadComments.php?matchID=" + matchID).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+        String data = response.body().string();
+
+        try{
+            JSONObject json = new JSONObject(data);
+            Iterator<String> iterator = json.keys();
+
+            while(iterator.hasNext()){
+                String key = iterator.next();
+                int id = Integer.parseInt(key);
+                JSONObject commentJson = json.getJSONObject(key);
+                String content = commentJson.getString("content");
+                String timestampStr = commentJson.getString("timestamp");
+                DateTimeFormatter formater = null;
+                LocalDateTime timestamp = null;
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    formater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    timestamp = LocalDateTime.parse(timestampStr, formater);
+
+                }
+                else{
+                    timestamp = parse(timestampStr);
+                }
+
+                Comment comment = new Comment(id, matchID, content, timestamp);
+                comments.add(comment);
+
+            }
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        return comments;
+    }
+
+    private LocalDateTime parse(String str){
+        LocalDateTime datetime = null;
+        String date, time;
+        String[] datetimeArray = str.split(" ");
+        date = datetimeArray[0];
+        time = datetimeArray[1];
+
+        String yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr;
+        String[] dateArray = date.split("-");
+        String[] timeArray = time.split(":");
+        yearStr = dateArray[0];
+        monthStr = dateArray[1];
+        dayStr = dateArray[2];
+        hourStr = timeArray[0];
+        minuteStr = timeArray[1];
+        secondStr = timeArray[2];
+
+        int year = Integer.parseInt(yearStr);
+        int month = Integer.parseInt(monthStr);
+        int day = Integer.parseInt(dayStr);
+        int hour = Integer.parseInt(hourStr);
+        int minute = Integer.parseInt(minuteStr);
+        int second = Integer.parseInt(secondStr);
+        datetime = LocalDateTime.of(year, month, day, hour, minute, second);
+
+        return datetime;
     }
 
 }

@@ -153,7 +153,7 @@ public class MatchAdministrationActivity extends AppCompatActivity {
                         fragment = new AdminMatchDetailsFragment(getIntent());
                         break;
                     case 1:
-                        fragment = new AdminLiveCommentaryFragment();
+                        fragment = new AdminLiveCommentaryFragment(getIntent());
                         break;
                     case 2:
                         fragment = new AdminLineUpFragment(homeTeam, awayTeam, getIntent());
