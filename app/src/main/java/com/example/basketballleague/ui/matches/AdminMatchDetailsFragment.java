@@ -185,6 +185,16 @@ public class AdminMatchDetailsFragment extends Fragment {
             //submitting successful SHOOT to database
             String matchIDstr = matchIntent.getExtras().getString("matchID");
             http.submitEvent(Integer.parseInt(matchIDstr), selectedPlayer.getPlayerID(), typeOfShoot, minute);
+
+            int matchID = Integer.parseInt(matchIntent.getExtras().getString("matchID"));
+
+            if(typeOfShoot.equals("1pt")){
+                http.updateScore(matchID, selectedTeam, 1);
+            } else if(typeOfShoot.equals("2pt")){
+                http.updateScore(matchID, selectedTeam, 2);
+            } else if(typeOfShoot.equals("3pt")){
+                http.updateScore(matchID, selectedTeam, 3);
+            }
         }
         else{     //error message if not right minute input has been given
             Toast.makeText(getActivity(), "Please enter minute between 1 and 40", Toast.LENGTH_SHORT).show();

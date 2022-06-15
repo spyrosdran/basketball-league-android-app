@@ -171,6 +171,13 @@ public class okHttpHandlerAdmin {
         Response response = client.newCall(request).execute();
     }
 
+    public void updateScore(int matchID, String teamScored, int points) throws  IOException{
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/updateScore.php?matchID=" + matchID + "&teamScored=" + teamScored + "&points=" + points).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+    }
+
     public ArrayList<PlayerInCourt> getAllTeamPlayers(String team) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
