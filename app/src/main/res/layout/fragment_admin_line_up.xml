@@ -245,15 +245,38 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/submit_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:layout_weight="60"
-            android:backgroundTint="@color/orangeForeground"
-            android:text="SUBMIT"
-            android:textColor="@color/white" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:layout_weight="40"
+                android:backgroundTint="@color/orangeForeground"
+                android:text="SUBMIT"
+                android:textColor="@color/white"/>
+
+
+            <EditText
+                android:id="@+id/minute_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:hint="Set minute"
+                android:textColorHint="@color/orangeForeground"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

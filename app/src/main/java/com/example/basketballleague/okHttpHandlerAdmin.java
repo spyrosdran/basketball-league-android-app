@@ -22,7 +22,7 @@ import okhttp3.Response;
 
 public class okHttpHandlerAdmin {
 
-    String IP = "192.168.1.129";
+    String IP = "192.168.1.3";
 
     public okHttpHandlerAdmin() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -125,10 +125,10 @@ public class okHttpHandlerAdmin {
 
     }
 
-    public void changePlayer(String changeOut, String changeIn, String matchID) throws IOException {
+    public void changePlayer(String changeOut, String changeIn, String matchID, int minute) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-        Request request = new Request.Builder().url("http://" + IP + "/basketleague/changePlayers.php?changeOut=" + changeOut + "&changeIn=" + changeIn +"&matchID=" + matchID).method("POST", body).build();
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/changePlayers.php?changeOut=" + changeOut + "&changeIn=" + changeIn +"&matchID=" + matchID + "&minute=" + minute).method("POST", body).build();
         Response response = client.newCall(request).execute();
     }
 

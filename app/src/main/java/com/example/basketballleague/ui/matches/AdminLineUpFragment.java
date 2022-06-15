@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -262,14 +263,11 @@ public class AdminLineUpFragment extends Fragment {
                         String playerGetsOut = out.getText().toString();
                         String playerGetsIn = in.getText().toString();
                         String matchID = intent.getStringExtra("matchID");
-
-                        System.out.println("Player gets out: " + playerGetsOut);
-                        System.out.println("Player gets in: " + playerGetsIn);
-                        System.out.println("MatchID: " + matchID);
+                        int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minute_view)).getText().toString());
 
                         okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
                         try {
-                            okHttpHandlerAdmin.changePlayer(playerGetsOut, playerGetsIn, matchID);
+                            okHttpHandlerAdmin.changePlayer(playerGetsOut, playerGetsIn, matchID, minute);
 
                             int changeInRadioID = changeInRadioGroup.getCheckedRadioButtonId();
                             RadioButton changeInRadio = (RadioButton) getActivity().findViewById(changeInRadioID);
@@ -341,6 +339,14 @@ public class AdminLineUpFragment extends Fragment {
             home_team_radio_button.setChecked(false);
 
         }
+
+        EditText minutes = (EditText) getActivity().findViewById(R.id.minute_view);
+        minutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                minutes.setHint("");
+            }
+        });
     }
 
 

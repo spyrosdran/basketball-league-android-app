@@ -4,6 +4,7 @@
 	$changeOutName = $_GET["changeOut"];
 	$changeInName = $_GET["changeIn"];
 	$matchID = $_GET["matchID"];
+	$minute = $_GET["minute"];
 	
 	//Retrieving the Player who goes out
 	$mysqli = new mysqli("localhost", "root", "", "basketleague");
@@ -23,16 +24,15 @@
 	$uname="root";
 	$pass="";
 	$dbname="basketleague";
-	
-	$date = date('d-m-y h:i:s');
+
 	
 	$dbh = mysqli_connect($host,$uname,$pass) or die("cannot connect");
 	mysqli_select_db($dbh, $dbname);
 			
-	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES(" . $changeOutPlayerID . "," . $matchID . ",'change out', '" . $date . "');";
+	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES(" . $changeOutPlayerID . "," . $matchID . ",'change out', '" . $minute . "');";
 	mysqli_query($dbh, $sql);
 	
-	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES(" . $changeInPlayerID . "," . $matchID . ",'change in', '" . $date . "');";
+	$sql = "INSERT INTO `match_event` (`playerID`, `matchID`, `type`, `minute`) VALUES(" . $changeInPlayerID . "," . $matchID . ",'change in', '" . $minute . "');";
 	mysqli_query($dbh, $sql);
 	
 	//Updating match table
