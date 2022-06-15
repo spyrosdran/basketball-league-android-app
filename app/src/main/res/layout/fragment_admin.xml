@@ -35,6 +35,7 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/homePhoto"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/img"
@@ -79,6 +80,7 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/awayPhoto"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/img"

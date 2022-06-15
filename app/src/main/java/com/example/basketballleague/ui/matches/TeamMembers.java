@@ -3,24 +3,29 @@ package com.example.basketballleague.ui.matches;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamMembers {
-    private ArrayList<String> players;
+import com.example.basketballleague.okHttpHandlerAdmin;
 
-    public TeamMembers(){
-        players = new ArrayList<String>();
+public class TeamMembers {
+    private ArrayList<PlayerInCourt> players;
+
+    public TeamMembers(String matchID, String homeaway){
+        try {
+            okHttpHandlerAdmin okHttpHandler = new okHttpHandlerAdmin();
+            players = okHttpHandler.getInCourtTeamPlayers(matchID, homeaway);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*players = new ArrayList<String>();
         players.add("ANTETOKOUMBO");
         players.add("LEBRON");
         players.add("IRVING");
         players.add("O'NEIL");
-        players.add("WESTBROOK");
+        players.add("WESTBROOK");*/
     }
 
-    public TeamMembers(String matchID){
 
-    }
-
-    public List<String> getAllPlayers() {
-        List<String> temp = new ArrayList<String>();
+    public List<PlayerInCourt> getAllPlayers() {
+        List<PlayerInCourt> temp = new ArrayList<PlayerInCourt>();
         for (int i=0; i<players.size(); i++) {
             temp.add(players.get(i));
         }

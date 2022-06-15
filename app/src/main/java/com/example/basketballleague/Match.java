@@ -10,11 +10,15 @@ public class Match {
     private String awayTeam;
     private int homeTeamScore;
     private int awayTeamScore;
+    private String homeImageURI;
+    private String awayImageURI;
     private String matchDate;
     private String leagueName;
     private String status;
     private ArrayList<String> homePlayers;
     private ArrayList<String> awayPlayers;
+
+
 
     public Match(String matchID, String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore, String matchDate, String leagueName, String status, ArrayList<String> homePlayers, ArrayList<String> awayPlayers) {
         this.matchID = matchID;
@@ -38,6 +42,27 @@ public class Match {
         this.matchDate = matchDate;
         this.leagueName = leagueName;
         this.status = status;
+    }
+
+    public Match(String matchID, String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore, String homeImageURI, String awayImageURI, String matchDate, String leagueName, String status) {
+        this.matchID = matchID;
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.homeTeamScore = homeTeamScore;
+        this.awayTeamScore = awayTeamScore;
+        this.homeImageURI = homeImageURI;
+        this.awayImageURI = awayImageURI;
+        this.matchDate = matchDate;
+        this.leagueName = leagueName;
+        this.status = status;
+    }
+
+    public String getHomeImageURI() {
+        return homeImageURI;
+    }
+
+    public String getAwayImageURI() {
+        return awayImageURI;
     }
 
     public String getMatchID() {

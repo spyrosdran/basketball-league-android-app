@@ -3,6 +3,9 @@ package com.example.basketballleague;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -55,8 +59,11 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
                 intent.putExtra("awayID", match.getAwayTeam());
                 intent.putExtra("homeScore",Integer.toString(match.getHomeTeamScore()));
                 intent.putExtra("awayScore", Integer.toString(match.getAwayTeamScore()));
+                intent.putExtra("homeImageURI", match.getHomeImageURI());
+                intent.putExtra("awayImageURI", match.getAwayImageURI());
                 intent.putExtra("matchDate", match.getMatchDate());
                 intent.putExtra("matchLeague", match.getLeagueName());
+                intent.putExtra("status", match.getStatus());
                 view.getContext().startActivity(intent);
             }
         });
@@ -101,6 +108,28 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
             awayScore.setText(Integer.toString(match.getAwayTeamScore()));
             leagueName.setText(match.getLeagueName());
 
+            if (match.getStatus().equals("upcoming") || match.getStatus().equals("ended"))
+                date.setText(match.getMatchDate());
+            else {
+                date.setText("Now Live >");
+                date.setTextColor(Color.parseColor("#FF0000"));
+            }
+
+            try {
+                URL imgURL = new URL(match.getHomeImageURI());
+                Bitmap icon_val = BitmapFactory.decodeStream(imgURL.openConnection().getInputStream());
+                homePhoto.setImageBitmap(Bitmap.createScaledBitmap(icon_val,40,40,false));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                URL imgURL = new URL(match.getAwayImageURI());
+                Bitmap icon_val = BitmapFactory.decodeStream(imgURL.openConnection().getInputStream());
+                awayPhoto.setImageBitmap(Bitmap.createScaledBitmap(icon_val,40,40,false));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
     }
