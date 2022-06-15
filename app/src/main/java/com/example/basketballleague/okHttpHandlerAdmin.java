@@ -22,7 +22,7 @@ import okhttp3.Response;
 
 public class okHttpHandlerAdmin {
 
-    String IP = "192.168.1.3";
+    String IP = "127.0.0.1";
 
     public okHttpHandlerAdmin() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -122,6 +122,15 @@ public class okHttpHandlerAdmin {
         }
 
         return players;
+
+    }
+    public ArrayList<String> getCommentsForLiveMatch(String matchID)throws IOException{
+        ArrayList<Match> matches = new ArrayList<>();
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getNewComments.php?").method("POST", body).build();
+        Response response = client.newCall(request).execute();
+        String data = response.body().string();
 
     }
 
@@ -287,5 +296,45 @@ public class okHttpHandlerAdmin {
 
         return datetime;
     }
+    public ArrayList<Comment> loadNewComments(int matchID, int lastCommentId)throws IOException{
+        ArrayList<Comment> comments = new ArrayList<Comment>();
 
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getNewComments.php?matchID=" + matchID+"&last_comment_id="+lastCommentId).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+        String data = response.body().string();
+
+        try{
+            JSONObject json = new JSONObject(data);
+            Iterator<String> iterator = json.keys();
+
+            while(iterator.hasNext()){
+                String key = iterator.next();
+                int id = Integer.parseInt(key);
+                JSONObject commentJson = json.getJSONObject(key);
+                String content = commentJson.getString("content");
+                String timestampStr = commentJson.getString("timestamp");
+                DateTimeFormatter formater = null;
+                LocalDateTime timestamp = null;
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    formater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    timestamp = LocalDateTime.parse(timestampStr, formater);
+
+                }
+                else{
+                    timestamp = parse(timestampStr);
+                }
+
+                Comment comment = new Comment(id, matchID, content, timestamp);
+                comments.add(comment);
+
+            }
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        return comments;
+    }
 }
