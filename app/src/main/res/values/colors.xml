@@ -12,4 +12,5 @@
     <color name="orangeForeground">#D59306</color>
     <color name="whiteForeground">#FFFFFFFF</color>
     <color name="fragmentBackground">#343434</color>
+    <color name="cardTextGrey">#7f7f7f</color>
 </resources>

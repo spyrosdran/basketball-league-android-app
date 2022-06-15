@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".ui.matches.AdminMatchDetailsFragment">
+
+        <!-- Team Selection -->
+        <RadioGroup
+            android:id="@+id/team_selection_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/home_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:background="@drawable/team_radio_selector"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp"
+                android:text="Home"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/away_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:background="@drawable/team_radio_selector"
+                android:button="@android:color/transparent"
+                android:paddingLeft="20sp"
+                android:paddingRight="20sp"
+                android:text="Away"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8sp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <RadioGroup
+                android:id="@+id/change_out_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/player_out_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="@drawable/team_radio_selector"
+                    android:button="@android:color/transparent"
+                    android:text="Player 1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/player_out_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="@drawable/team_radio_selector"
+                    android:button="@android:color/transparent"
+                    android:text="Player 2"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/player_out_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="@drawable/team_radio_selector"
+                    android:button="@android:color/transparent"
+                    android:text="Player 3"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/player_out_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="@drawable/team_radio_selector"
+                    android:button="@android:color/transparent"
+                    android:text="Player 4"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/player_out_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="@drawable/team_radio_selector"
+                    android:button="@android:color/transparent"
+                    android:text="Player 5"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/change_in_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/player_in_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="@drawable/team_radio_selector"
+                    android:button="@android:color/transparent"
+                    android:text="Player 1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14sp"
+            android:orientation="horizontal"
+            android:paddingLeft="30sp">
+
+            <TextView
+                android:id="@+id/player_to_go_out"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/match_card"
+                android:gravity="center"
+                android:padding="8sp"
+                android:text="Player To Go Out"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/arrow_out"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="14sp"
+                android:text="&gt;"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14sp"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:paddingRight="30sp">
+
+            <TextView
+                android:id="@+id/arrow_in"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="14sp"
+                android:text="&lt;"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/player_to_go_in"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/match_card"
+                android:gravity="center"
+                android:padding="8sp"
+                android:text="Player To Go Out"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/undo_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10sp"
+                android:layout_weight="40"
+                android:backgroundTint="@color/fragmentBackground"
+                android:text="UNDO"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10sp"
+                android:layout_weight="60"
+                android:backgroundTint="@color/orangeForeground"
+                android:text="SUBMIT"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
