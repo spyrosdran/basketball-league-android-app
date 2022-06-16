@@ -15,7 +15,7 @@
         android:id="@+id/navigation_standings"
         android:name="com.example.basketballleague.ui.standings.StandingsFragment"
         android:label="@string/title_standings"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_standings" />
 
     <fragment
         android:id="@+id/navigation_matches"
@@ -23,11 +23,13 @@
         android:label="@string/title_matches"
         tools:layout="@layout/fragment_matches" >
         <action
-            android:id="@+id/action_navigation_matches_to_navigation_match_details"
-            app:destination="@id/navigation_match_details" />
-        <action
             android:id="@+id/action_navigation_matches_to_navigation_admin"
             app:destination="@id/navigation_admin" />
+        <action
+            android:id="@+id/action_navigation_matches_to_liveMatchActivity5"
+            app:destination="@id/liveMatchActivity5"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -54,5 +56,21 @@
         <action
             android:id="@+id/action_navigation_admin_to_navigation_matches"
             app:destination="@id/navigation_matches" />
+    </fragment>
+    <activity
+        android:id="@+id/liveMatchActivity5"
+        android:name="com.example.basketballleague.ui.matches.LiveMatchActivity"
+        android:label="activity_live_match"
+        tools:layout="@layout/activity_live_match" />
+    <fragment
+        android:id="@+id/liveMatchFragment"
+        android:name="com.example.basketballleague.ui.matches.LiveMatchFragment"
+        android:label="fragment_live_match"
+        tools:layout="@layout/fragment_live_match" >
+        <action
+            android:id="@+id/action_liveMatchFragment_to_navigation_matches"
+            app:destination="@id/navigation_matches"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 </navigation>
