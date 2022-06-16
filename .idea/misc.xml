@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragmemt_live_matches.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin_line_up.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.264" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/fragment_matches.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio Projects/basketball-league-android-app/app/src/main/res/layout/match_card.xml" value="0.18704710144927536" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.2265" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/commentary_round_corners.xml" value="0.106" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.106" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.2265" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/ic_basketleague.xml" value="0.106" />
@@ -11,8 +19,12 @@
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.106" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/ic_league_logo.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/selector.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/textview_bottom_orange_border.xml" value="0.106" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/drawable/view_bottom_border.xml" value="0.116" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_admin_line_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_admin_live_commentary.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/BasketLeagueApp/app/src/main/res/layout/fragment_home.xml" value="0.19746376811594202" />
@@ -58,14 +70,24 @@
         <entry key="..\:/Users/spyro/AndroidStudioProjects/BasketballLeague/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/spyro/AndroidStudioProjects/BasketballLeague/app/src/main/res/layout/fragment_dashboard.xml" value="0.13697916666666668" />
         <entry key="..\:/Users/spyro/AndroidStudioProjects/BasketballLeague/app/src/main/res/layout/fragment_home.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/match_card.xml" value="0.1655" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/selected_tab.xml" value="0.1155" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/tab_selector.xml" value="0.1655" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/team_radio_selector.xml" value="0.1655" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/unselected_tab.xml" value="0.1155" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/view_bottom_border.xml" value="0.1155" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragmemt_live_matches.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin.xml" value="0.25" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_line_up.xml" value="0.264" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_live_commentary.xml" value="0.1" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_match_details.xml" value="0.1" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_home.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_match_detail.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_match_details.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_matches.xml" value="0.264" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/match_card.xml" value="0.264" />
       </map>
     </option>
   </component>

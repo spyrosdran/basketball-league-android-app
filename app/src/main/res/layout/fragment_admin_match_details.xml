@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.matches.AdminMatchDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/orangeForeground">
+
+
+        <Button
+            android:id="@+id/player1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickBP1"
+            android:text="Player1"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/player4"
+            android:textSize="8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50sp"
+            android:layout_marginTop="24sp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickBP4"
+            android:text="Player4"
+            app:layout_constraintEnd_toStartOf="@+id/events"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/player2" />
+
+        <Button
+            android:id="@+id/player5"
+            android:textSize="8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24sp"
+            android:layout_marginEnd="50sp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickBP5"
+            android:text="Player5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/events"
+            app:layout_constraintTop_toBottomOf="@+id/player3" />
+
+        <Spinner
+            android:id="@+id/events"
+            android:textSize="8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="48sp"
+            android:layout_marginTop="36sp"
+            android:backgroundTint="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/player4" />
+
+        <Button
+            android:id="@+id/player3"
+            android:textSize="8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-30sp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickBP3"
+            android:text="Player3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/player1"
+            app:layout_constraintTop_toBottomOf="@+id/player1" />
+
+        <Button
+            android:textSize="8sp"
+            android:id="@+id/player2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-30sp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickBP2"
+            android:text="Player2"
+            app:layout_constraintEnd_toStartOf="@+id/player1"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/player1" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50sp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickSubmit"
+            android:text="SUBMIT"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:textSize="8sp"
+            android:id="@+id/undoButton"
+            android:layout_width="85sp"
+            android:layout_height="48sp"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickUndo"
+            android:text="Undo"
+            app:layout_constraintBottom_toBottomOf="@+id/submitButton"
+            app:layout_constraintEnd_toStartOf="@+id/submitButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/submitButton" />
+
+        <Button
+            android:id="@+id/buttonFT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickFT"
+            android:text="FreeThrow"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/button2pt"
+            app:layout_constraintEnd_toStartOf="@+id/button2pt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button2pt" />
+
+        <Button
+            android:id="@+id/button2pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClick2pt"
+            android:text="2pointer"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventLabel" />
+
+        <Button
+            android:id="@+id/button3pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClick3pt"
+            android:text="3pointer"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/button2pt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button2pt"
+            app:layout_constraintTop_toTopOf="@+id/button2pt" />
+
+        <Button
+            android:id="@+id/buttonIN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickIN"
+            android:text="IN"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/undoButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2pt"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/buttonOUT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickOUT"
+            android:text="OUT"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonIN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2pt"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/homeTeamBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickHome"
+            android:text="Home"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/player1"
+            app:layout_constraintEnd_toStartOf="@+id/events"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/awayTeamBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/orangeForeground"
+            android:onClick="onClickAway"
+            android:text="Away"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/player1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/events"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/minuteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MINUTE"
+            android:textColor="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="@+id/minuteNumberView"
+            app:layout_constraintStart_toStartOf="@+id/minuteNumberView"
+            app:layout_constraintTop_toBottomOf="@+id/minuteNumberView" />
+
+        <EditText
+            android:id="@+id/minuteNumberView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/submitButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/submitButton"
+            app:layout_constraintTop_toTopOf="@+id/submitButton" />
+
+        <Spinner
+            android:id="@+id/mistakeType"
+            android:textSize="8sp"
+            android:layout_width="wrap_content"
+            android:layout_height="48sp"
+            android:backgroundTint="@color/orangeForeground"
+            app:layout_constraintBottom_toBottomOf="@+id/events"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/events"
+            app:layout_constraintTop_toTopOf="@+id/events" />
+
+        <TextView
+            android:id="@+id/eventLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EVENT"
+            android:textColor="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="@+id/events"
+            app:layout_constraintStart_toStartOf="@+id/events"
+            app:layout_constraintTop_toBottomOf="@+id/events" />
+
+        <TextView
+            android:id="@+id/mistakeTypeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(MISTAKE)"
+            android:textColor="@color/orangeForeground"
+            app:layout_constraintEnd_toEndOf="@+id/mistakeType"
+            app:layout_constraintStart_toStartOf="@+id/mistakeType"
+            app:layout_constraintTop_toBottomOf="@+id/mistakeType" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
