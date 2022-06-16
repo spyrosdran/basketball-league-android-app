@@ -340,13 +340,6 @@ public class AdminLineUpFragment extends Fragment {
 
         }
 
-        EditText minutes = (EditText) getActivity().findViewById(R.id.minute_view);
-        minutes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                minutes.setHint("");
-            }
-        });
     }
 
 
