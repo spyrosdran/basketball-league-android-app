@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.basketballleague.ui.matches.Comment;
+import com.example.basketballleague.ui.matches.LineUpFragment;
 
 
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 
 
 public class LiveCommentary extends Fragment {
-
     private ArrayList<Comment> comments;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +44,7 @@ public class LiveCommentary extends Fragment {
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 params.setMargins(14,0,0,0); // setMargins(left, top, right, bottom)
                 timpstampView.setLayoutParams(params);
-                timpstampView.setText(new Integer(String.valueOf(comments.get(i).getTimestamp()));
+                timpstampView.setText("sdgrdg");
                 timpstampView.setTextColor(Integer.parseInt("@color/white"));
                 linearLayout.addView(timpstampView);
 

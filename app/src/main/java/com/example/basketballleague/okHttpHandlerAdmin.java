@@ -124,16 +124,6 @@ public class okHttpHandlerAdmin {
         return players;
 
     }
-    public ArrayList<String> getCommentsForLiveMatch(String matchID)throws IOException{
-        ArrayList<Match> matches = new ArrayList<>();
-        OkHttpClient client = new OkHttpClient().newBuilder().build();
-        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
-        Request request = new Request.Builder().url("http://" + IP + "/basketleague/getNewComments.php?").method("POST", body).build();
-        Response response = client.newCall(request).execute();
-        String data = response.body().string();
-
-    }
-
     public void changePlayer(String changeOut, String changeIn, String matchID, int minute) throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
