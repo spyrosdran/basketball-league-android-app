@@ -15,7 +15,7 @@
         android:id="@+id/navigation_standings"
         android:name="com.example.basketballleague.ui.standings.StandingsFragment"
         android:label="@string/title_standings"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_standings" />
 
     <fragment
         android:id="@+id/navigation_matches"
@@ -37,6 +37,16 @@
         android:name="com.example.basketballleague.ui.top5.Top5Fragment"
         android:label="@string/title_top5"
         tools:layout="@layout/fragment_top5" />
+
+    <fragment
+        android:id="@+id/navigation_match_details"
+        android:name="com.example.basketballleague.ui.matches.AdminMatchDetailsFragment"
+        android:label="@string/title_matches"
+        tools:layout="@layout/fragment_admin_match_details" >
+        <action
+            android:id="@+id/action_navigation_match_details_to_navigation_matches"
+            app:destination="@id/navigation_matches" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_admin"

@@ -67,9 +67,9 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = null;
         switch (position) {
-            case 0:
-                fragment = new MatchDetailsFragment();
-                break;
+//            case 0:
+//                fragment = new MatchDetailsFragment();
+//                break;
             case 1:
                 fragment = new LiveCommentaryFragment();
                 break;
