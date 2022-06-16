@@ -22,9 +22,7 @@
             android:roundIcon="@mipmap/ic_appico_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.BasketballLeague"
-            android:usesCleartextTraffic="true">
-      
-      <meta-data
+            android:usesCleartextTraffic="true"
             android:name="com.google.android.actions"
             android:resource="@xml/network_security_config" />
 

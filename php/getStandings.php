@@ -2,7 +2,7 @@
     $host = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "basketleagueapp";
+    $dbname = "basketleague";
 
     $leagueid = $_GET['leagueid'];
 
@@ -34,7 +34,7 @@
         }
 
         //calculate Wins and Loses
-        $query2 = "SELECT * FROM `match` WHERE leagueID = " . $leagueid;
+        $query2 = "SELECT * FROM `match` WHERE `leagueID` = " . $leagueid . " AND `status` = \"ended\";";
 
         $result2 = $mysqli->query($query2);
 
