@@ -47,7 +47,7 @@ public class SignInPopup extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SignInPopup.this, MainActivity.class);
-                intent.putExtra("type", "guest");
+                intent.putExtra("type", "normal");
                 intent.putExtra("display", "Guest");
                 startActivity(intent);
             }

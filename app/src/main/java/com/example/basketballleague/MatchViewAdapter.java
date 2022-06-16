@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,10 +29,12 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
     Context context;
     private ArrayList<Match> matches = new ArrayList<>();
     View view;
+    Intent local_intent;
 
-    public MatchViewAdapter(Context context, ArrayList<Match> matches) {
+    public MatchViewAdapter(Context context, ArrayList<Match> matches, Intent intent) {
         this.context = context;
         this.matches = matches;
+        this.local_intent = intent;
     }
 
     @NonNull
@@ -52,19 +55,37 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MatchAdministrationActivity.class);
-                Match match = matches.get(position);
-                intent.putExtra("matchID", match.getMatchID());
-                intent.putExtra("homeID", match.getHomeTeam());
-                intent.putExtra("awayID", match.getAwayTeam());
-                intent.putExtra("homeScore",Integer.toString(match.getHomeTeamScore()));
-                intent.putExtra("awayScore", Integer.toString(match.getAwayTeamScore()));
-                intent.putExtra("homeImageURI", match.getHomeImageURI());
-                intent.putExtra("awayImageURI", match.getAwayImageURI());
-                intent.putExtra("matchDate", match.getMatchDate());
-                intent.putExtra("matchLeague", match.getLeagueName());
-                intent.putExtra("status", match.getStatus());
-                view.getContext().startActivity(intent);
+                String type = local_intent.getExtras().getString("type");
+                if(type.equals("admin")){
+                    Intent intent = new Intent(context, MatchAdministrationActivity.class);
+                    Match match = matches.get(position);
+                    intent.putExtra("matchID", match.getMatchID());
+                    intent.putExtra("homeID", match.getHomeTeam());
+                    intent.putExtra("awayID", match.getAwayTeam());
+                    intent.putExtra("homeScore",Integer.toString(match.getHomeTeamScore()));
+                    intent.putExtra("awayScore", Integer.toString(match.getAwayTeamScore()));
+                    intent.putExtra("homeImageURI", match.getHomeImageURI());
+                    intent.putExtra("awayImageURI", match.getAwayImageURI());
+                    intent.putExtra("matchDate", match.getMatchDate());
+                    intent.putExtra("matchLeague", match.getLeagueName());
+                    intent.putExtra("status", match.getStatus());
+                    view.getContext().startActivity(intent);
+                } else if(type.equals("normal")){
+                    Match match = matches.get(position);
+                    String status = match.getStatus();
+                    if(status.equals("live")){
+                        //TODO: show quest live match details activity
+                    } else if(status.equals("upcomming")){
+                        //do nothing
+                    } else if(status.equals("ended")){
+                        //TODO: show quest match details activity
+                    }
+
+                    //for debugging
+                    Toast.makeText(context, "You are a normal user, not an admin", Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });
     }

@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
             Log.d("MyApp","Upcoming Matches Array is empty");
 
         //Adapting The Match Data
-        MatchViewAdapter liveMatchViewAdapter = new MatchViewAdapter(this.getActivity(), liveMatchesArray);
+        MatchViewAdapter liveMatchViewAdapter = new MatchViewAdapter(this.getActivity(), liveMatchesArray, getActivity().getIntent());
         liveMatches.setAdapter(liveMatchViewAdapter);
         liveMatches.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
             Log.d("MyApp","Upcoming Matches Array is empty");
 
         //Adapting The Match Data
-        MatchViewAdapter upcomingMatchViewAdapter = new MatchViewAdapter(this.getActivity(), upcomingMatchesArray);
+        MatchViewAdapter upcomingMatchViewAdapter = new MatchViewAdapter(this.getActivity(), upcomingMatchesArray, getActivity().getIntent());
         upcomingMatches.setAdapter(upcomingMatchViewAdapter);
         upcomingMatches.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
             Log.d("MyApp","Matches is empty");
 
         //Adapting The Match Data
-        MatchViewAdapter matchViewAdapter = new MatchViewAdapter(this.getActivity(), matches);
+        MatchViewAdapter matchViewAdapter = new MatchViewAdapter(this.getActivity(), matches, getActivity().getIntent());
         pastMatches.setAdapter(matchViewAdapter);
         pastMatches.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
