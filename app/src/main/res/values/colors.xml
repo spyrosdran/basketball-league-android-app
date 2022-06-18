@@ -12,5 +12,11 @@
     <color name="orangeForeground">#D59306</color>
     <color name="whiteForeground">#FFFFFFFF</color>
     <color name="fragmentBackground">#343434</color>
+<<<<<<< HEAD
     <color name="cardTextGrey">#7f7f7f</color>
+=======
+    <color name="grey">#202020</color>
+    <color name="light_grey">#aeaeae</color>
+
+>>>>>>> origin/AntonisTsou
 </resources>
