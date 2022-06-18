@@ -22,7 +22,7 @@ import okhttp3.Response;
 
 public class okHttpHandlerAdmin {
 
-    String IP = "192.168.1.3";
+    String IP = "192.168.1.129";
 
     public okHttpHandlerAdmin() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -283,7 +283,6 @@ public class okHttpHandlerAdmin {
         int hour = Integer.parseInt(hourStr);
         int minute = Integer.parseInt(minuteStr);
         int second = Integer.parseInt(secondStr);
-        datetime = LocalDateTime.of(year, month, day, hour, minute, second);
 
         return datetime;
     }

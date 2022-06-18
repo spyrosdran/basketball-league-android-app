@@ -263,11 +263,10 @@ public class AdminLineUpFragment extends Fragment {
                         String playerGetsOut = out.getText().toString();
                         String playerGetsIn = in.getText().toString();
                         String matchID = intent.getStringExtra("matchID");
-                        int minute = Integer.parseInt(((TextView) getActivity().findViewById(R.id.minute_view)).getText().toString());
 
                         okHttpHandlerAdmin okHttpHandlerAdmin = new okHttpHandlerAdmin();
                         try {
-                            okHttpHandlerAdmin.changePlayer(playerGetsOut, playerGetsIn, matchID, minute);
+                            okHttpHandlerAdmin.changePlayer(playerGetsOut, playerGetsIn, matchID, 28);
 
                             int changeInRadioID = changeInRadioGroup.getCheckedRadioButtonId();
                             RadioButton changeInRadio = (RadioButton) getActivity().findViewById(changeInRadioID);

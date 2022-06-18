@@ -77,7 +77,7 @@ public class StandingsFragment extends Fragment {
 
         JSONObject teams;
         try{
-            String url = "http://192.168.2.3/basketleague/getStandings.php?leagueid=1";
+            String url = "http://192.168.1.129/basketleague/getStandings.php?leagueid=1";
             OkHttpClient client = new OkHttpClient().newBuilder().build();
             RequestBody body = RequestBody.create("", MediaType.parse("application/json"));
             Request request = new Request.Builder().url(url).method("POST", body).build();

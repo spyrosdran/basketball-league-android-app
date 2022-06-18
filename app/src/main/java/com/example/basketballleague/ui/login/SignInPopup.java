@@ -105,7 +105,7 @@ public class SignInPopup extends Activity {
         StrictMode.setThreadPolicy(policy);
 
         try{
-            String url ="http://192.168.1.5/basketleague/login.php";
+            String url ="http://192.168.1.129/basketleague/login.php";
             OkHttpClient client = new OkHttpClient().newBuilder().build();
             RequestBody body = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)

@@ -102,7 +102,7 @@ public class SignUpPopup extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         try{
-            String url ="http://192.168.1.5/basketleague/signup.php";
+            String url ="http://192.168.1.129/basketleague/signup.php";
             OkHttpClient client = new OkHttpClient().newBuilder().build();
             RequestBody body = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
