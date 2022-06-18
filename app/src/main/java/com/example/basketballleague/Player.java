@@ -54,14 +54,9 @@ public class Player {
 
     public Player(int id){
         //Local database
-        String databaseIP = "172.30.144.1";
+        String databaseIP = "192.168.1.129";
         //Load player
         String url = "http://" + databaseIP + "/basketleague/fillPLayerStats.php?playerID=" + id;
-
-        //InfinityFreeApp database
-        //String databaseIP = "basketleagueapp.infinityfreeapp.com";
-        //Load player
-        //String url = "http://" + databaseIP + "/fillPLayerStats.php?playerID=" + id;
 
         try {
             OkHttpHandler okHttpHandler = new OkHttpHandler();

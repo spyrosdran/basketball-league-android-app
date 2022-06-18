@@ -24,6 +24,7 @@ import java.util.Comparator;
 //the second fragment for showing roster of the team
 public class RosterTeam extends Fragment {
 
+
     private ArrayList<TeamPlayers> players = new ArrayList<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,11 @@ public class RosterTeam extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_roster_team, container, false);
 
+        Bundle b = getActivity().getIntent().getExtras();
+        String teamName = b.getString("teamName");
+
         //connection from db to take players from  teamgotten
-        DataStatsConnection db = new DataStatsConnection();
+        DataStatsConnection db = new DataStatsConnection(teamName);
 
          players = db.getplayers();
 

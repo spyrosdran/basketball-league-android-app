@@ -1,5 +1,6 @@
 package com.example.basketballleague.ui.TeamDetails.sndFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,8 +17,11 @@ import com.example.basketballleague.ui.TeamDetails.DataStatsConnection;
 //the first fragment showing team stats
 
 public class TeamStatisticsFragment extends Fragment {
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -26,8 +30,11 @@ public class TeamStatisticsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        Bundle b = getActivity().getIntent().getExtras();
+        String teamName = b.getString("teamName");
+
         View rootView = inflater.inflate(R.layout.fragment_team_statistics, container, false);
-        DataStatsConnection db = new DataStatsConnection();
+        DataStatsConnection db = new DataStatsConnection(teamName);
 
         TextView txtGp = rootView.findViewById(R.id.GPtxt);
         String t = db.getMatchesLenght();

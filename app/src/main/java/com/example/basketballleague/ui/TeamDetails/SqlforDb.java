@@ -15,7 +15,7 @@ import java.util.List;
 //all the sql code
 //retrieving from database
 
-public class SqlforDb implements Runnable{
+public class SqlforDb<teamName> implements Runnable{
 
     private Team team = new Team("","","",0);
     private ArrayList<MatchListing> match = new ArrayList<>();
@@ -23,7 +23,11 @@ public class SqlforDb implements Runnable{
     private Statsperplayer playerStats = new Statsperplayer(0 ,0,0,0,0,0,0);
     private int maxID=-1000000;
     private int minID=1000000;
+    private String teamName;
 
+    public SqlforDb(String teamName) {
+        this.teamName = teamName;
+    }
 
     public void run() {
         System.out.println("trying to read from database");
@@ -44,23 +48,24 @@ public class SqlforDb implements Runnable{
             }
             */
 
-            String teamGotten ="Olympiacos";// (classname).getTeamname() ;
+            String teamGotten =teamName;// (classname).getTeamname() ;
             System.out.println(teamGotten);
             Class.forName("org.mariadb.jdbc.Driver");
             // Connection to database
             // Change ip and port for correct conncetivity
 
-            String ip = "192.168.2.3";
+            String ip = "192.168.1.129";
             String port = "3306";
 
             //ip="192.168.2.2";
             //port="34659";
 
-            connection = DriverManager.getConnection("jdbc:mariadb://"+ip +":" + port+"/basketleagueapp","root","pass");
-
+            System.out.println("before connection");
+            connection = DriverManager.getConnection("jdbc:mariadb://"+ip +":" + port+"/basketleague","root","");
+            System.out.println("after connection");
             //team
             try{
-                String sql="SELECT * FROM team WHERE NAME='"+teamGotten+ "'";
+                String sql="SELECT * FROM team WHERE name='"+teamGotten+ "'";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 ResultSet rs = preparedStatement.executeQuery(sql);
 

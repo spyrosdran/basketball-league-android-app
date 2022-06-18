@@ -18,6 +18,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.basketballleague.ui.TeamDetails.TeamDetail;
+import com.example.basketballleague.ui.players.PlayerDetails;
+
 import org.w3c.dom.Text;
 
 import java.net.URL;
@@ -144,6 +147,15 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
                 e.printStackTrace();
             }
 
+            homePhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent  = new Intent(view.getContext(), TeamDetail.class);
+                    intent.putExtra("teamName", homeName.getText().toString());
+                    view.getContext().startActivity(intent);
+                }
+            });
+
             try {
                 URL imgURL = new URL(match.getAwayImageURI());
                 Bitmap icon_val = BitmapFactory.decodeStream(imgURL.openConnection().getInputStream());
@@ -151,6 +163,15 @@ public class MatchViewAdapter extends RecyclerView.Adapter<MatchViewAdapter.Matc
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            awayPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent  = new Intent(view.getContext(), TeamDetail.class);
+                    intent.putExtra("teamName", awayName.getText().toString());
+                    view.getContext().startActivity(intent);
+                }
+            });
 
         }
     }

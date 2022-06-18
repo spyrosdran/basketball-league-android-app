@@ -57,22 +57,6 @@
         <entry key="..\:/Users/Evangelia/AndroidStudioProjects/basketball-league-android-app/app/src/main/res/layout/fragment_sign_in.xml" value="0.15208333333333332" />
         <entry key="..\:/Users/Evangelia/AndroidStudioProjects/basketball-league-android-app/app/src/main/res/layout/fragment_top5.xml" value="0.1322463768115942" />
         <entry key="..\:/Users/Evangelia/AndroidStudioProjects/basketball-league-android-app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/drawable-anydpi/left_arrow.xml" value="0.336" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/drawable/border_style.xml" value="0.3305" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/drawable/bottom_border_style.xml" value="0.3305" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/drawable/ic_lineup.xml" value="0.3305" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/drawable/left_arrow_background.xml" value="0.336" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/drawable/roundstyle.xml" value="0.336" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/activity_player_details.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragmemt_team_detail.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragment_admin.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragment_dashboard.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragment_notifications.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragment_player_detail.xml" value="0.25" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/layout/fragment_sign_in.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/achil/Downloads/basketball-league-android-app-main (1)/basketball-league-android-app-main/app/src/main/res/xml/network_security_config.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/spyro/AndroidStudioProjects/BasketballLeague/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/spyro/AndroidStudioProjects/BasketballLeague/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.192" />
         <entry key="..\:/Users/spyro/AndroidStudioProjects/BasketballLeague/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
@@ -91,7 +75,9 @@
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/unselected_tab.xml" value="0.1155" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/drawable/view_bottom_border.xml" value="0.1155" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/activity_team_detail.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragmemt_live_matches.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragmemt_team_detail.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_line_up.xml" value="0.264" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_admin_live_commentary.xml" value="0.1" />
@@ -103,8 +89,10 @@
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_match_details.xml" value="0.25" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_matches.xml" value="0.264" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
-        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_player_detail.xml" value="0.1" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_player_detail.xml" value="0.264" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_roster_team.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_standings.xml" value="0.1" />
+        <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_team_statistics.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_top5.xml" value="0.1" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/fragment_tournament_card.xml" value="0.1" />
         <entry key="..\:/Users/spyro/Documents/basketball-league-android-app/app/src/main/res/layout/match_card.xml" value="0.264" />

@@ -6,16 +6,7 @@
     android:orientation="vertical"
     android:layout_margin="25dp">
 
-    <TextView
 
-        android:id="@+id/league_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="22dp"
-        android:text="Matches Administration"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="23dp" />
 
 
 

@@ -1,5 +1,7 @@
 package com.example.basketballleague.ui.TeamDetails;
 
+import android.content.Intent;
+
 import java.util.ArrayList;
 
 //needed for data connection
@@ -21,13 +23,13 @@ public class DataStatsConnection{
     private int totalblocks=0;
     private int totalsteals=0;
     private int totalTurnovers=0;
+    Intent intent;
 
 
-    public DataStatsConnection(){
-
+    public DataStatsConnection(String teamName){
 
         //threads used for faster results
-        SqlforDb dbconnection = new SqlforDb();
+        SqlforDb dbconnection = new SqlforDb(teamName);
         Thread t = new Thread(dbconnection);//teamname);
         try{
             t.start();

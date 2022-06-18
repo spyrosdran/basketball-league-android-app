@@ -3,6 +3,7 @@ package com.example.basketballleague.ui.TeamDetails;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,13 +23,24 @@ public class TeamDetail extends AppCompatActivity {
 
     private Button statsbtn;
     private Button Rosterbtn;
-    private DataStatsConnection db = new DataStatsConnection();
+    Intent intent;
+    private DataStatsConnection db;
     private  TextView  txtPosition;
+
+//    public TeamDetail(Intent intent) {
+//        this.intent = intent;
+//        System.out.println(intent.getStringExtra("teamName"));
+//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_detail);
+
+        intent = getIntent();
+        System.out.println(getIntent().getExtras().getString("teamName"));
+        db = new DataStatsConnection(getIntent().getExtras().getString("teamName"));
 
 
         //Load for team
@@ -101,6 +113,8 @@ public class TeamDetail extends AppCompatActivity {
 
                 Rosterbtn.setBackgroundColor(getResources().getColor(R.color.orangeForeground));
                 statsbtn.setBackgroundColor(getResources().getColor(R.color.grey));
+
+
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
